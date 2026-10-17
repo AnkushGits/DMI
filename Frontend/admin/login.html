@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | DM Skills Institute</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: { 50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac', 400: '#4ade80', 500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d', 950: '#052e16' } }, fontFamily: { heading: ['Plus Jakarta Sans', 'sans-serif'], body: ['Inter', 'sans-serif'] } } } };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>body { background: radial-gradient(circle at top, rgba(22, 163, 74, .08), transparent 35%), #f8fafc; }</style>
+</head>
+<body class="font-body text-slate-800 antialiased" data-login-page>
+  <main class="min-h-screen flex items-center justify-center p-6">
+    <section class="w-full max-w-md rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-brand-100/80">
+      <header class="p-6 border-b border-slate-100 bg-brand-50/70 text-center">
+        <p class="font-heading text-xl font-extrabold text-slate-900">DM Skills Institute</p>
+        <p class="mt-1 text-[11px] uppercase tracking-[0.22em] text-slate-500">Administrator Portal</p>
+      </header>
+      <div class="p-6">
+        <form class="space-y-5" data-auth-role="admin">
+          <div>
+            <label for="adminIdentifier" class="mb-2 block text-sm font-semibold text-slate-700">Admin ID</label>
+            <input id="adminIdentifier" name="identifier" type="text" autocomplete="username" required class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm outline-none focus:border-brand-500 focus:bg-white focus:ring-2 focus:ring-brand-200">
+          </div>
+          <div>
+            <label for="adminPassword" class="mb-2 block text-sm font-semibold text-slate-700">Password</label>
+            <input id="adminPassword" name="password" type="password" autocomplete="current-password" required class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm outline-none focus:border-brand-500 focus:bg-white focus:ring-2 focus:ring-brand-200">
+          </div>
+          <button type="submit" class="w-full rounded-xl bg-brand-600 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-600/30 hover:bg-brand-700">Login</button>
+          <div data-login-status role="status" aria-live="polite" class="min-h-[20px] text-xs text-slate-500"></div>
+        </form>
+        <a href="/" class="mt-5 inline-block text-sm font-medium text-brand-700 hover:underline">Back to Home</a>
+      </div>
+    </section>
+  </main>
+  <script src="/js/portal.js"></script>
+</body>
+</html>

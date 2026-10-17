@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | DM Skills Institute</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: { 50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac', 400: '#4ade80', 500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d', 950: '#052e16' } }, fontFamily: { heading: ['Plus Jakarta Sans', 'sans-serif'], body: ['Inter', 'sans-serif'] } } } };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>body { font-family: Inter, sans-serif; } html { scroll-behavior: smooth; }</style>
+</head>
+<body class="bg-slate-100 text-slate-800" data-auth-role="admin">
+  <div class="min-h-screen md:flex">
+    <button type="button" data-mobile-nav-backdrop hidden aria-label="Close navigation" class="fixed inset-0 z-30 bg-slate-950/50 md:hidden"></button>
+    <aside id="dashboard-sidebar" class="hidden flex-col bg-slate-900 p-5 text-white md:fixed md:inset-y-0 md:flex md:w-64 md:overflow-hidden">
+      <a href="/" class="mb-6 flex items-center gap-3">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4VQwefoo8x5ayZpkO-38hWwZMXLLW9roUfPhhL9Qid176l5xPnMB3K9H3M8Ezhcc-nG770O9CdIE9XM7NdvnXcZS-qXSpAo7cSO1oqpapWZIFLtQqbqiT6c6glLUz3OM1lpuKXAx1hAaW7qPsqw9O9cBWyflW_o19DVA7JSonxDF-YqEGL21jvAL5bhGyBYNVLYpjeONNXiXqUxfqLClq9Goyb67khqd5xkUbqp-Gd188lgeu11TyGEYxyQOZaRVjhg" alt="" class="h-11 w-11 rounded-lg bg-white object-contain">
+        <span><strong class="block font-heading text-lg">DM Skills</strong><small class="text-slate-300">Admin Dashboard</small></span>
+      </a>
+      <nav class="grid max-h-64 grid-cols-2 gap-2 overflow-y-auto text-sm md:max-h-none md:flex-1 md:grid-cols-1">
+        <p class="col-span-2 px-3 pt-2 text-[10px] font-bold uppercase tracking-widest text-slate-400 md:col-span-1">Main</p>
+        <a class="rounded-lg bg-brand-600 px-3 py-2 font-semibold text-white hover:bg-slate-700" href="/admin/dashboard#overview">Overview</a>
+        <p class="col-span-2 px-3 pt-2 text-[10px] font-bold uppercase tracking-widest text-slate-400 md:col-span-1">Students</p>
+        <a class="rounded-lg px-3 py-2 hover:bg-slate-800" href="/admin/dashboard#students">Students</a>
+        <a class="rounded-lg px-3 py-2 hover:bg-slate-800" href="/admin/dashboard#attendance">Attendance</a>
+        <p class="col-span-2 px-3 pt-2 text-[10px] font-bold uppercase tracking-widest text-slate-400 md:col-span-1">Employees</p>
+        <a class="rounded-lg px-3 py-2 hover:bg-slate-800" href="/admin/dashboard#employees">Employees</a>
+        <p class="col-span-2 px-3 pt-2 text-[10px] font-bold uppercase tracking-widest text-slate-400 md:col-span-1">Academic</p>
+        <a class="rounded-lg px-3 py-2 hover:bg-slate-800" href="/admin/dashboard#courses">Courses</a>
+        <a class="rounded-lg px-3 py-2 hover:bg-slate-800" href="/admin/dashboard#assignments">Assignments</a>
+        <a class="rounded-lg px-3 py-2 hover:bg-slate-800" href="/admin/dashboard#materials">Study Materials</a>
+        <a class="rounded-lg px-3 py-2 hover:bg-slate-800" href="/admin/dashboard#results">Results</a>
+        <p class="col-span-2 px-3 pt-2 text-[10px] font-bold uppercase tracking-widest text-slate-400 md:col-span-1">Finance</p>
+        <a class="rounded-lg px-3 py-2 hover:bg-slate-800" href="/admin/dashboard#fees">Fees</a>
+        <p class="col-span-2 px-3 pt-2 text-[10px] font-bold uppercase tracking-widest text-slate-400 md:col-span-1">Communication</p>
+        <a class="rounded-lg px-3 py-2 hover:bg-slate-800" href="/admin/dashboard#announcements">Announcements</a>
+        <p class="col-span-2 px-3 pt-2 text-[10px] font-bold uppercase tracking-widest text-slate-400 md:col-span-1">System</p>
+        <button type="button" data-password-security class="rounded-lg px-3 py-2 text-left hover:bg-slate-800">Security</button>
+      </nav>
+      <button type="button" data-logout class="mt-3 shrink-0 rounded-lg border border-slate-700 px-3 py-2 text-left hover:bg-slate-800">Logout</button>
+    </aside>
+    <main class="min-w-0 flex-1 p-5 md:ml-64 md:p-8">
+      <button type="button" data-mobile-nav-toggle aria-controls="dashboard-sidebar" aria-expanded="false" class="mb-4 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white md:hidden">Menu</button>
+      <header id="overview" class="mb-6">
+        <p class="text-xs uppercase tracking-[0.22em] text-brand-700">Administration</p>
+        <h1 class="font-heading text-3xl font-extrabold text-slate-900">Welcome, <span data-user-name>Admin</span></h1>
+        <p class="mt-2 text-sm text-red-700" role="status" data-dashboard-status></p>
+      </header>
+      <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"><p class="text-sm text-slate-500">Total Students</p><strong class="mt-2 block text-2xl" data-admin-stat="total_students">—</strong></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"><p class="text-sm text-slate-500">Active Students</p><strong class="mt-2 block text-2xl" data-admin-stat="active_students">—</strong></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"><p class="text-sm text-slate-500">Total Employees</p><strong class="mt-2 block text-2xl" data-admin-stat="total_employees">—</strong></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"><p class="text-sm text-slate-500">Active Employees</p><strong class="mt-2 block text-2xl" data-admin-stat="active_employees">—</strong></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"><p class="text-sm text-slate-500">Active Courses</p><strong class="mt-2 block text-2xl" data-admin-stat="total_courses">—</strong></article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:col-span-2"><p class="text-sm text-slate-500">Pending Fees</p><strong class="mt-2 block text-2xl" data-admin-stat="pending_fees">—</strong></article>
+      </section>
+
+      <section id="students" class="mt-8">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="font-heading text-xl font-bold">Students</h2>
+            <button type="button" data-toggle-form="students" aria-expanded="false" aria-controls="student-form" class="shrink-0 rounded-lg bg-brand-600 px-4 py-2 text-sm font-bold text-white hover:bg-brand-700">Add Student</button>
+          </div>
+          <div class="mt-4 grid gap-2 sm:grid-cols-3">
+            <input type="search" data-admin-search="students" placeholder="Search ID, name, phone, or email" aria-label="Search students" class="rounded-lg border-slate-300 text-sm">
+            <select data-admin-status-filter="students" aria-label="Filter students by status" class="rounded-lg border-slate-300 text-sm"><option value="">All statuses</option><option value="active">Active</option><option value="inactive">Inactive</option></select>
+            <select data-admin-course-filter="students" aria-label="Filter students by course" class="rounded-lg border-slate-300 text-sm"><option value="">All courses</option></select>
+          </div>
+          <div class="mt-4 overflow-x-auto"><table class="w-full min-w-[760px] text-left text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="px-4 py-3">Student ID</th><th class="px-4 py-3">Name</th><th class="px-4 py-3">Course</th><th class="px-4 py-3">Phone</th><th class="px-4 py-3">Status</th><th class="px-4 py-3">Actions</th></tr></thead><tbody data-admin-students><tr><td colspan="6" class="px-4 py-3 text-slate-500">Loading students…</td></tr></tbody></table></div>
+        </div>
+        <form id="student-form" hidden class="mt-4 max-w-4xl rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" data-admin-form="students">
+          <h3 class="font-heading text-lg font-bold">Add Student</h3>
+          <div class="mt-4 grid gap-3">
+            <input name="full_name" placeholder="Full name" required maxlength="150" class="rounded-lg border-slate-300 text-sm">
+            <select name="status" required class="rounded-lg border-slate-300 text-sm"><option value="active">Active</option><option value="inactive">Inactive</option></select>
+            <select name="course_id" data-course-options required class="rounded-lg border-slate-300 text-sm"><option value="">Select course</option></select>
+            <select name="employee_id" data-employee-options class="rounded-lg border-slate-300 text-sm"><option value="">Assign instructor (optional)</option></select>
+            <input name="father_name" placeholder="Father name" maxlength="150" class="rounded-lg border-slate-300 text-sm">
+            <input name="mother_name" placeholder="Mother name" maxlength="150" class="rounded-lg border-slate-300 text-sm">
+            <input name="phone" placeholder="Phone" maxlength="30" class="rounded-lg border-slate-300 text-sm">
+            <input name="email" type="email" placeholder="Email" maxlength="254" class="rounded-lg border-slate-300 text-sm">
+            <input name="gender" placeholder="Gender" maxlength="30" class="rounded-lg border-slate-300 text-sm">
+            <input name="date_of_birth" type="date" aria-label="Date of birth" class="rounded-lg border-slate-300 text-sm">
+            <input name="admission_date" type="date" aria-label="Admission date" class="rounded-lg border-slate-300 text-sm">
+            <textarea name="address" placeholder="Address" maxlength="2000" class="rounded-lg border-slate-300 text-sm"></textarea>
+            <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Password</label>
+            <div class="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
+              <input name="password" type="password" placeholder="Enter password" minlength="8" maxlength="128" required class="rounded-lg border-slate-300 text-sm">
+              <button type="button" data-generate-password class="rounded-lg border border-brand-600 px-3 py-2 text-xs font-semibold text-brand-700 hover:bg-brand-50">Generate Memorable Password</button>
+            </div>
+            <input name="confirm_password" type="password" placeholder="Confirm password" minlength="8" maxlength="128" required class="rounded-lg border-slate-300 text-sm">
+            <button class="rounded-lg bg-brand-600 px-4 py-3 text-sm font-bold text-white hover:bg-brand-700" type="submit">Create Student</button>
+            <p data-form-status role="status" aria-live="polite" class="break-words text-xs text-slate-500"></p>
+          </div>
+        </form>
+      </section>
+
+      <section id="employees" class="mt-8">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="font-heading text-xl font-bold">Employees</h2>
+            <button type="button" data-toggle-form="employees" aria-expanded="false" aria-controls="employee-form" class="shrink-0 rounded-lg bg-brand-600 px-4 py-2 text-sm font-bold text-white hover:bg-brand-700">Add Employee</button>
+          </div>
+          <div class="mt-4 grid gap-2 sm:grid-cols-3">
+            <input type="search" data-admin-search="employees" placeholder="Search ID, name, phone, or email" aria-label="Search employees" class="rounded-lg border-slate-300 text-sm">
+            <select data-admin-status-filter="employees" aria-label="Filter employees by status" class="rounded-lg border-slate-300 text-sm"><option value="">All statuses</option><option value="active">Active</option><option value="inactive">Inactive</option></select>
+            <select data-admin-course-filter="employees" aria-label="Filter employees by course" class="rounded-lg border-slate-300 text-sm"><option value="">All courses</option></select>
+          </div>
+          <div class="mt-4 overflow-x-auto"><table class="w-full min-w-[760px] text-left text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="px-4 py-3">Employee ID</th><th class="px-4 py-3">Name</th><th class="px-4 py-3">Designation</th><th class="px-4 py-3">Phone</th><th class="px-4 py-3">Status</th><th class="px-4 py-3">Actions</th></tr></thead><tbody data-admin-employees><tr><td colspan="6" class="px-4 py-3 text-slate-500">Loading employees…</td></tr></tbody></table></div>
+        </div>
+        <form id="employee-form" hidden class="mt-4 max-w-4xl rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" data-admin-form="employees">
+          <h3 class="font-heading text-lg font-bold">Add Employee</h3>
+          <div class="mt-4 grid gap-3">
+            <input name="full_name" placeholder="Full name" required maxlength="150" class="rounded-lg border-slate-300 text-sm">
+            <select name="status" required class="rounded-lg border-slate-300 text-sm"><option value="active">Active</option><option value="inactive">Inactive</option></select>
+            <input name="phone" placeholder="Phone" maxlength="30" class="rounded-lg border-slate-300 text-sm">
+            <input name="email" type="email" placeholder="Email" maxlength="254" class="rounded-lg border-slate-300 text-sm">
+            <input name="designation" placeholder="Designation" maxlength="120" class="rounded-lg border-slate-300 text-sm">
+            <input name="department" placeholder="Department" maxlength="120" class="rounded-lg border-slate-300 text-sm">
+            <textarea name="address" placeholder="Address" maxlength="2000" class="rounded-lg border-slate-300 text-sm"></textarea>
+            <select name="course_ids" data-course-options multiple required aria-label="Assign courses" class="min-h-24 rounded-lg border-slate-300 text-sm"></select>
+            <input name="joining_date" type="date" aria-label="Joining date" class="rounded-lg border-slate-300 text-sm">
+            <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Password</label>
+            <div class="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
+              <input name="password" type="password" placeholder="Enter password" minlength="8" maxlength="128" required class="rounded-lg border-slate-300 text-sm">
+              <button type="button" data-generate-password class="rounded-lg border border-brand-600 px-3 py-2 text-xs font-semibold text-brand-700 hover:bg-brand-50">Generate Memorable Password</button>
+            </div>
+            <input name="confirm_password" type="password" placeholder="Confirm password" minlength="8" maxlength="128" required class="rounded-lg border-slate-300 text-sm">
+            <button class="rounded-lg bg-brand-600 px-4 py-3 text-sm font-bold text-white hover:bg-brand-700" type="submit">Create Employee</button>
+            <p data-form-status role="status" aria-live="polite" class="break-words text-xs text-slate-500"></p>
+          </div>
+        </form>
+      </section>
+
+      <section id="courses" class="mt-8 grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="font-heading text-xl font-bold">Courses</h2>
+          <div class="mt-4 overflow-x-auto"><table class="w-full min-w-[600px] text-left text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="px-4 py-3">Code</th><th class="px-4 py-3">Course</th><th class="px-4 py-3">Fee</th><th class="px-4 py-3">Status</th><th class="px-4 py-3">Actions</th></tr></thead><tbody data-admin-courses><tr><td colspan="5" class="px-4 py-3 text-slate-500">Loading courses…</td></tr></tbody></table></div>
+        </div>
+        <form class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" data-admin-form="courses">
+          <h3 class="font-heading text-lg font-bold">Add Course</h3>
+          <div class="mt-4 grid gap-3">
+            <input name="course_code" placeholder="Course code" required maxlength="40" class="rounded-lg border-slate-300 text-sm">
+            <input name="name" placeholder="Course name" required maxlength="180" class="rounded-lg border-slate-300 text-sm">
+            <input name="fee" type="number" min="0" step="0.01" placeholder="Fee (₹)" required class="rounded-lg border-slate-300 text-sm">
+            <input name="duration_months" type="number" min="1" max="600" placeholder="Duration in months" class="rounded-lg border-slate-300 text-sm">
+            <textarea name="description" placeholder="Description" maxlength="5000" class="rounded-lg border-slate-300 text-sm"></textarea>
+            <button class="rounded-lg bg-brand-600 px-4 py-3 text-sm font-bold text-white hover:bg-brand-700" type="submit">Create Course</button>
+            <p data-form-status role="status" aria-live="polite" class="break-words text-xs text-slate-500"></p>
+          </div>
+        </form>
+      </section>
+
+      <section id="attendance" class="mt-8 grid gap-6 xl:grid-cols-[24rem_minmax(0,1fr)]">
+        <form class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" data-admin-form="attendance" data-person-type="student">
+          <h2 class="font-heading text-xl font-bold">Attendance Management</h2>
+          <div class="mt-4 grid gap-3">
+            <fieldset>
+              <legend class="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Attendance For</legend>
+              <div class="flex gap-4 text-sm">
+                <label class="flex items-center gap-2"><input type="radio" name="person_type" value="student" data-person-type-option checked> Student</label>
+                <label class="flex items-center gap-2"><input type="radio" name="person_type" value="employee" data-person-type-option> Employee</label>
+              </div>
+            </fieldset>
+
+            <div data-person-search="student">
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500" for="attendance-student-search">Search Student</label>
+              <input id="attendance-student-search" type="search" data-person-search-input="student" autocomplete="off" placeholder="Type ID, name, email or phone…" class="rounded-lg border-slate-300 text-sm">
+              <ul data-person-search-results="student" role="listbox" class="mt-1 hidden max-h-56 overflow-auto rounded-lg border border-slate-200 bg-white shadow-sm"></ul>
+              <div data-person-selected="student" class="mt-2 hidden rounded-xl border border-brand-200 bg-brand-50 p-3 text-sm">
+                <p class="font-semibold" data-selected-name></p>
+                <p class="text-xs text-slate-600" data-selected-code></p>
+                <p class="text-xs text-slate-600" data-selected-meta></p>
+                <button type="button" data-person-change="student" class="mt-2 text-xs font-bold text-brand-700 underline">Change</button>
+              </div>
+              <input type="hidden" name="student_person_id" data-person-id="student" required>
+            </div>
+
+            <div data-person-search="employee" class="hidden">
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500" for="attendance-employee-search">Search Employee</label>
+              <input id="attendance-employee-search" type="search" data-person-search-input="employee" autocomplete="off" placeholder="Type ID, name, email, phone or designation…" class="rounded-lg border-slate-300 text-sm">
+              <ul data-person-search-results="employee" role="listbox" class="mt-1 hidden max-h-56 overflow-auto rounded-lg border border-slate-200 bg-white shadow-sm"></ul>
+              <div data-person-selected="employee" class="mt-2 hidden rounded-xl border border-brand-200 bg-brand-50 p-3 text-sm">
+                <p class="font-semibold" data-selected-name></p>
+                <p class="text-xs text-slate-600" data-selected-code></p>
+                <p class="text-xs text-slate-600" data-selected-meta></p>
+                <button type="button" data-person-change="employee" class="mt-2 text-xs font-bold text-brand-700 underline">Change</button>
+              </div>
+              <input type="hidden" name="employee_person_id" data-person-id="employee" required>
+            </div>
+
+            <div data-course-field>
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500" for="attendance-course-search">Course</label>
+              <input id="attendance-course-search" type="search" data-person-search-input="course" autocomplete="off" placeholder="Type course name or code…" class="rounded-lg border-slate-300 text-sm">
+              <ul data-person-search-results="course" role="listbox" class="mt-1 hidden max-h-56 overflow-auto rounded-lg border border-slate-200 bg-white shadow-sm"></ul>
+              <div data-person-selected="course" class="mt-2 hidden rounded-xl border border-brand-200 bg-brand-50 p-3 text-sm">
+                <p class="font-semibold" data-selected-name></p>
+                <p class="text-xs text-slate-600" data-selected-code></p>
+                <button type="button" data-person-change="course" class="mt-2 text-xs font-bold text-brand-700 underline">Change</button>
+              </div>
+              <input type="hidden" name="attendance_course_id" data-person-id="course">
+            </div>
+
+            <div>
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500" for="attendance-date">Date</label>
+              <input id="attendance-date" name="date" type="date" required class="rounded-lg border-slate-300 text-sm">
+            </div>
+            <div>
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500" for="attendance-status">Status</label>
+              <select id="attendance-status" name="status" required class="rounded-lg border-slate-300 text-sm">
+                <option value="present">Present</option><option value="absent">Absent</option><option value="late">Late</option><option value="leave">Leave</option>
+                <option value="half_day" data-employee-only hidden>Half Day</option>
+              </select>
+            </div>
+            <input name="remarks" maxlength="500" placeholder="Remarks (optional)" class="rounded-lg border-slate-300 text-sm">
+            <p data-attendance-existing class="hidden rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800"></p>
+            <button type="submit" class="rounded-lg bg-brand-600 px-4 py-3 text-sm font-bold text-white hover:bg-brand-700">Save Attendance</button>
+            <div data-attendance-report class="hidden rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs text-slate-700"></div>
+            <p data-form-status role="status" aria-live="polite" class="text-xs text-slate-500"></p>
+          </div>
+        </form>
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="font-heading text-xl font-bold">Attendance Records</h2>
+          <div class="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+            <select data-attendance-filter="person_type" aria-label="Filter attendance by person type" class="rounded-lg border-slate-300 text-sm"><option value="student">Students</option><option value="employee">Employees</option></select>
+            <select data-attendance-filter="course_id" aria-label="Filter attendance by course" class="rounded-lg border-slate-300 text-sm"><option value="">All courses</option></select>
+            <input data-attendance-filter="date_from" type="date" aria-label="Filter attendance from date" class="rounded-lg border-slate-300 text-sm">
+            <input data-attendance-filter="date_to" type="date" aria-label="Filter attendance to date" class="rounded-lg border-slate-300 text-sm">
+            <select data-attendance-filter="status" aria-label="Filter attendance by status" class="rounded-lg border-slate-300 text-sm"><option value="">All statuses</option><option value="present">Present</option><option value="absent">Absent</option><option value="late">Late</option><option value="leave">Leave</option><option value="half_day">Half Day</option></select>
+            <input data-attendance-filter="search" type="search" aria-label="Search attendance records" placeholder="Search person" class="rounded-lg border-slate-300 text-sm">
+          </div>
+          <div class="mt-4 overflow-x-auto"><table class="w-full min-w-[900px] text-left text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="px-4 py-3">Date</th><th class="px-4 py-3">Person</th><th class="px-4 py-3">Course</th><th class="px-4 py-3">Employee</th><th class="px-4 py-3">Status</th><th class="px-4 py-3">Remarks</th><th class="px-4 py-3">Actions</th></tr></thead><tbody data-admin-attendance><tr><td colspan="7" class="px-4 py-3 text-slate-500">Loading attendance…</td></tr></tbody></table></div>
+        </div>
+      </section>
+
+      <section id="assignments" class="mt-8 grid gap-6 xl:grid-cols-[minmax(0,1fr)_24rem]">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="font-heading text-xl font-bold">Assignments</h2>
+          <div class="mt-4 grid gap-2 sm:grid-cols-3">
+            <select data-assignment-filter="course_id" aria-label="Filter assignments by course" class="rounded-lg border-slate-300 text-sm"><option value="">All courses</option></select>
+            <select data-assignment-filter="status" aria-label="Filter assignments by status" class="rounded-lg border-slate-300 text-sm"><option value="">All statuses</option><option value="active">Active</option><option value="draft">Draft</option><option value="closed">Closed</option></select>
+            <input data-assignment-filter="search" type="search" aria-label="Search assignments" placeholder="Search title or course" class="rounded-lg border-slate-300 text-sm">
+          </div>
+          <div class="mt-4 overflow-x-auto"><table class="w-full min-w-[760px] text-left text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="px-4 py-3">Title</th><th class="px-4 py-3">Course</th><th class="px-4 py-3">Due Date</th><th class="px-4 py-3">Status</th><th class="px-4 py-3">Created By</th><th class="px-4 py-3">Actions</th></tr></thead><tbody data-admin-assignments><tr><td colspan="6" class="px-4 py-3 text-slate-500">Loading assignments…</td></tr></tbody></table></div>
+        </div>
+        <form class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" data-admin-form="assignments">
+          <h3 class="font-heading text-lg font-bold">Create Assignment</h3>
+          <div class="mt-4 grid gap-3">
+            <input name="title" placeholder="Title" required maxlength="200" class="rounded-lg border-slate-300 text-sm">
+            <textarea name="description" placeholder="Description" maxlength="10000" class="rounded-lg border-slate-300 text-sm"></textarea>
+            <div>
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500" for="assignment-course-search">Course</label>
+              <input id="assignment-course-search" type="search" data-person-search-input="assignment-course" autocomplete="off" placeholder="Type course name or code…" class="rounded-lg border-slate-300 text-sm">
+              <ul data-person-search-results="assignment-course" role="listbox" class="mt-1 hidden max-h-56 overflow-auto rounded-lg border border-slate-200 bg-white shadow-sm"></ul>
+              <div data-person-selected="assignment-course" class="mt-2 hidden rounded-xl border border-brand-200 bg-brand-50 p-3 text-sm">
+                <p class="font-semibold" data-selected-name></p>
+                <p class="text-xs text-slate-600" data-selected-code></p>
+                <button type="button" data-person-change="assignment-course" class="mt-2 text-xs font-bold text-brand-700 underline">Change</button>
+              </div>
+              <input type="hidden" name="assignment_course_id" data-person-id="assignment-course">
+            </div>
+            <input name="due_date" type="date" aria-label="Due date" class="rounded-lg border-slate-300 text-sm">
+            <input name="resource_url" type="url" placeholder="Resource URL (optional)" maxlength="500" class="rounded-lg border-slate-300 text-sm">
+            <select name="status" class="rounded-lg border-slate-300 text-sm"><option value="active">Active</option><option value="draft">Draft</option><option value="closed">Closed</option></select>
+            <button type="submit" class="rounded-lg bg-brand-600 px-4 py-3 text-sm font-bold text-white hover:bg-brand-700">Create Assignment</button>
+            <p data-form-status role="status" aria-live="polite" class="break-words text-xs text-slate-500"></p>
+          </div>
+        </form>
+      </section>
+
+      <section id="materials" class="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <h2 class="font-heading text-xl font-bold">Study Materials</h2>
+        <div class="mt-4 overflow-x-auto"><table class="w-full min-w-[760px] text-left text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="px-4 py-3">Title</th><th class="px-4 py-3">Course</th><th class="px-4 py-3">Description</th><th class="px-4 py-3">Uploaded</th><th class="px-4 py-3">Resource</th></tr></thead><tbody data-admin-materials><tr><td colspan="5" class="px-4 py-3 text-slate-500">Loading materials…</td></tr></tbody></table></div>
+      </section>
+
+      <section id="fees" class="mt-8 grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="font-heading text-xl font-bold">Fee Records</h2>
+          <div class="mt-4 overflow-x-auto"><table class="w-full min-w-[760px] text-left text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="px-4 py-3">Student</th><th class="px-4 py-3">Course</th><th class="px-4 py-3">Amount</th><th class="px-4 py-3">Paid</th><th class="px-4 py-3">Due</th><th class="px-4 py-3">Payment Date</th><th class="px-4 py-3">Status</th></tr></thead><tbody data-admin-fees><tr><td colspan="7" class="px-4 py-3 text-slate-500">Loading fee records…</td></tr></tbody></table></div>
+        </div>
+        <form class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" data-admin-form="fees">
+          <h3 class="font-heading text-lg font-bold">Record Fee</h3>
+          <div class="mt-4 grid gap-3">
+            <div data-person-search="fee-student">
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500" for="fee-student-search">Search Student</label>
+              <input id="fee-student-search" type="search" data-person-search-input="fee-student" autocomplete="off" placeholder="Type ID, name, email or phone…" class="rounded-lg border-slate-300 text-sm">
+              <ul data-person-search-results="fee-student" role="listbox" class="mt-1 hidden max-h-56 overflow-auto rounded-lg border border-slate-200 bg-white shadow-sm"></ul>
+              <div data-person-selected="fee-student" class="mt-2 hidden rounded-xl border border-brand-200 bg-brand-50 p-3 text-sm">
+                <p class="font-semibold" data-selected-name></p>
+                <p class="text-xs text-slate-600" data-selected-code></p>
+                <button type="button" data-person-change="fee-student" class="mt-2 text-xs font-bold text-brand-700 underline">Change</button>
+              </div>
+              <input type="hidden" name="student_id" data-person-id="fee-student">
+            </div>
+            <input name="amount" type="number" min="0.01" step="0.01" placeholder="Total amount" required class="rounded-lg border-slate-300 text-sm">
+            <input name="paid_amount" type="number" min="0" step="0.01" value="0" placeholder="Paid amount" required class="rounded-lg border-slate-300 text-sm">
+            <input name="payment_date" type="date" aria-label="Payment date" class="rounded-lg border-slate-300 text-sm">
+            <input name="remarks" maxlength="500" placeholder="Remarks" class="rounded-lg border-slate-300 text-sm">
+            <button type="submit" class="rounded-lg bg-brand-600 px-4 py-3 text-sm font-bold text-white hover:bg-brand-700">Save Fee</button>
+            <p data-form-status role="status" aria-live="polite" class="text-xs text-slate-500"></p>
+          </div>
+        </form>
+      </section>
+
+      <section id="results" class="mt-8 grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="font-heading text-xl font-bold">Student Results</h2>
+          <div class="mt-4 overflow-x-auto"><table class="w-full min-w-[720px] text-left text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="px-4 py-3">Student</th><th class="px-4 py-3">Course</th><th class="px-4 py-3">Subject</th><th class="px-4 py-3">Marks</th><th class="px-4 py-3">Grade</th><th class="px-4 py-3">Exam Date</th></tr></thead><tbody data-admin-results><tr><td colspan="6" class="px-4 py-3 text-slate-500">Loading results…</td></tr></tbody></table></div>
+        </div>
+        <form class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" data-admin-form="results">
+          <h3 class="font-heading text-lg font-bold">Record Result</h3>
+          <div class="mt-4 grid gap-3">
+            <div data-person-search="result-student">
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500" for="result-student-search">Search Student</label>
+              <input id="result-student-search" type="search" data-person-search-input="result-student" autocomplete="off" placeholder="Type ID, name, email or phone…" class="rounded-lg border-slate-300 text-sm">
+              <ul data-person-search-results="result-student" role="listbox" class="mt-1 hidden max-h-56 overflow-auto rounded-lg border border-slate-200 bg-white shadow-sm"></ul>
+              <div data-person-selected="result-student" class="mt-2 hidden rounded-xl border border-brand-200 bg-brand-50 p-3 text-sm">
+                <p class="font-semibold" data-selected-name></p>
+                <p class="text-xs text-slate-600" data-selected-code></p>
+                <button type="button" data-person-change="result-student" class="mt-2 text-xs font-bold text-brand-700 underline">Change</button>
+              </div>
+              <input type="hidden" name="student_id" data-person-id="result-student">
+            </div>
+            <select name="course_id" data-course-options required aria-label="Course" class="rounded-lg border-slate-300 text-sm"><option value="">Select course</option></select>
+            <input name="subject" required maxlength="150" placeholder="Subject" class="rounded-lg border-slate-300 text-sm">
+            <input name="marks" type="number" min="0" max="100000" step="0.01" placeholder="Marks" required class="rounded-lg border-slate-300 text-sm">
+            <input name="grade" maxlength="20" placeholder="Grade" class="rounded-lg border-slate-300 text-sm">
+            <input name="exam_date" type="date" aria-label="Exam date" class="rounded-lg border-slate-300 text-sm">
+            <button type="submit" class="rounded-lg bg-brand-600 px-4 py-3 text-sm font-bold text-white hover:bg-brand-700">Save Result</button>
+            <p data-form-status role="status" aria-live="polite" class="text-xs text-slate-500"></p>
+          </div>
+        </form>
+      </section>
+
+      <section id="announcements" class="mt-8 grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="font-heading text-xl font-bold">Announcements</h2>
+          <div class="mt-4 overflow-x-auto"><table class="w-full min-w-[720px] text-left text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="px-4 py-3">Title</th><th class="px-4 py-3">Audience</th><th class="px-4 py-3">Course</th><th class="px-4 py-3">Published</th><th class="px-4 py-3">Message</th></tr></thead><tbody data-admin-announcements><tr><td colspan="5" class="px-4 py-3 text-slate-500">Loading announcements…</td></tr></tbody></table></div>
+        </div>
+        <form class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" data-admin-form="announcements">
+          <h3 class="font-heading text-lg font-bold">Publish Announcement</h3>
+          <div class="mt-4 grid gap-3">
+            <input name="title" required maxlength="180" placeholder="Title" class="rounded-lg border-slate-300 text-sm">
+            <select name="audience" required class="rounded-lg border-slate-300 text-sm"><option value="all">Everyone</option><option value="student">Students</option><option value="employee">Employees</option></select>
+            <select name="course_id" data-course-options aria-label="Optional course" class="rounded-lg border-slate-300 text-sm"><option value="">All courses</option></select>
+            <textarea name="body" required maxlength="5000" placeholder="Announcement" class="rounded-lg border-slate-300 text-sm"></textarea>
+            <button type="submit" class="rounded-lg bg-brand-600 px-4 py-3 text-sm font-bold text-white hover:bg-brand-700">Publish</button>
+            <p data-form-status role="status" aria-live="polite" class="text-xs text-slate-500"></p>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+  <script src="/js/portal.js"></script>
+</body>
+</html>

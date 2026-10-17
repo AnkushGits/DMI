@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Login | DM Skills Institute</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#f0fdf4',
+                100: '#dcfce7',
+                200: '#bbf7d0',
+                300: '#86efac',
+                400: '#4ade80',
+                500: '#22c55e',
+                600: '#16a34a',
+                700: '#15803d',
+                800: '#166534',
+                900: '#14532d',
+                950: '#052e16'
+              }
+            },
+            fontFamily: {
+              heading: ['Plus Jakarta Sans', 'sans-serif'],
+              body: ['Inter', 'sans-serif']
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        background: radial-gradient(circle at top, rgba(34, 197, 94, 0.08), transparent 40%), #f8fafc;
+      }
+    </style>
+  </head>
+  <body class="font-body text-slate-800 antialiased">
+    <div class="min-h-screen flex items-center justify-center p-6">
+      <div class="w-full max-w-md rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-brand-100/80">
+        <div class="p-6 border-b border-slate-100 bg-brand-50/70">
+          <div class="flex items-center justify-center gap-3 mb-3">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4VQwefoo8x5ayZpkO-38hWwZMXLLW9roUfPhhL9Qid176l5xPnMB3K9H3M8Ezhcc-nG770O9CdIE9XM7NdvnXcZS-qXSpAo7cSO1oqpapWZIFLtQqbqiT6c6glLUz3OM1lpuKXAx1hAaW7qPsqw9O9cBWyflW_o19DVA7JSonxDF-YqEGL21jvAL5bhGyBYNVLYpjeONNXiXqUxfqLClq9Goyb67khqd5xkUbqp-Gd188lgeu11TyGEYxyQOZaRVjhg" alt="DM Skills Institute" class="h-12 w-12 rounded-xl object-contain border border-brand-200 bg-white" />
+            <div>
+              <p class="font-heading text-xl font-extrabold text-slate-900">DM Skills Institute</p>
+              <p class="text-[11px] uppercase tracking-[0.22em] text-slate-500">Student Portal</p>
+            </div>
+          </div>
+          <p class="text-center text-sm font-medium text-slate-600">Welcome back</p>
+        </div>
+
+        <div class="p-6">
+          <form id="loginForm" data-auth-role="student" class="space-y-4">
+            <div>
+              <label for="studentIdentifier" class="mb-2 block text-sm font-semibold text-slate-700">Student ID</label>
+              <input id="studentIdentifier" name="identifier" type="text" placeholder="Enter your Student ID" autocomplete="username" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-brand-500 focus:bg-white focus:ring-2 focus:ring-brand-200" required />
+            </div>
+
+            <div>
+              <label for="studentPassword" class="mb-2 block text-sm font-semibold text-slate-700">Password</label>
+              <input id="studentPassword" name="password" type="password" placeholder="Enter password" autocomplete="current-password" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-brand-500 focus:bg-white focus:ring-2 focus:ring-brand-200" required />
+            </div>
+
+            <button type="submit" class="w-full rounded-xl bg-brand-600 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-600/30 transition hover:bg-brand-700">Login</button>
+
+            <div data-login-status class="min-h-[20px] text-xs text-slate-500"></div>
+          </form>
+          <p class="mt-3 text-center text-xs text-slate-500">Forgot your password? Contact the institute administrator to reset it.</p>
+
+          <div class="mt-5 flex items-center justify-between text-sm text-slate-600">
+            <a href="/" class="font-medium text-brand-700 hover:underline">Back to Home</a>
+            <a href="/employee/login" class="font-medium text-slate-700 hover:underline">Employee Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/portal.js"></script>
+  </body>
+</html>

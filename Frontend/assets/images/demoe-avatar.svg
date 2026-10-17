@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">DEMOE AI Assistant</title>
+  <desc id="desc">Placeholder avatar for the DEMOE AI assistant</desc>
+  <circle cx="64" cy="64" r="64" fill="#15803d"/>
+  <circle cx="64" cy="64" r="42" fill="#f0fdf4"/>
+  <rect x="35" y="40" width="58" height="46" rx="18" fill="#166534"/>
+  <circle cx="51" cy="61" r="6" fill="#fff"/>
+  <circle cx="77" cy="61" r="6" fill="#fff"/>
+  <path d="M50 74c8 6 20 6 28 0" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="5"/>
+  <path d="M64 40V29M58 29h12" fill="none" stroke="#166534" stroke-linecap="round" stroke-width="5"/>
+</svg>

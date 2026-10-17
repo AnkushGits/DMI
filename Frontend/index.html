@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="DM Skills Institute, Alwar - Career-oriented Computer &amp; Accounting Courses: Tally Prime + GST Professional, Advance Excel, RS-CIT." name="description"/>
+<meta content="#15803d" name="theme-color"/>
+<title>DM Skills Institute - Learn Skills. Build Your Career.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          50: '#f0fdf4',
+          100: '#dcfce7',
+          200: '#bbf7d0',
+          300: '#86efac',
+          400: '#4ade80',
+          500: '#22c55e',
+          600: '#16a34a',
+          700: '#15803d',
+          800: '#166534',
+          900: '#14532d',
+          950: '#052e16',
+        }
+      },
+      fontFamily: {
+        heading: ['Plus Jakarta Sans', 'sans-serif'],
+        body: ['Inter', 'sans-serif']
+      }
+    }
+  }
+};
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<style>
+/* Motion & Keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(22, 163, 74, 0); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.badge-pulse {
+  animation: pulseGlow 2.2s infinite;
+}
+
+/* Shimmer sweep container */
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  transition: none;
+}
+.shimmer-card:hover::after {
+  left: 150%;
+  transition: left 0.85s ease-in-out;
+}
+
+/* Scroll reveal classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 100ms; }
+.delay-150 { transition-delay: 150ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+
+/* Interactive button feedback */
+.btn-interactive {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+.btn-interactive:hover {
+  transform: scale(1.03);
+}
+.btn-interactive:active {
+  transform: scale(0.97);
+}
+
+/* Accordion transition */
+.syllabus-details, .faq-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+.syllabus-details.open, .faq-details.open {
+  max-height: 500px;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+</style>
+<link rel="stylesheet" href="/css/admission-popup.css">
+<link rel="stylesheet" href="/css/demoe.css">
+</head>
+<body class="bg-white text-slate-800 font-body antialiased selection:bg-brand-500 selection:text-white pb-20 md:pb-0">
+<!-- Top Announcement Bar -->
+<div class="bg-brand-800 text-brand-50 text-xs md:text-sm py-1.5 px-4 text-center font-medium relative z-50">
+<marquee behavior="scroll" direction="left" scrollamount="4" aria-label="New Batch 2026. Admissions Open! Limited seats available at Alwar Campus. Call: +91 73404 26939. DM SKILL INSTITUTE and TALLY EDUCATION">
+<span class="inline-flex items-center gap-1.5 bg-brand-700 text-white px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider badge-pulse shadow-sm"><span class="w-1.5 h-1.5 rounded-full bg-brand-300 animate-ping"></span>New Batch 2026</span>
+&nbsp;<span class="">Admissions Open! Limited seats available at Alwar Campus.</span>&nbsp;
+<a class="underline font-semibold hover:text-white hidden sm:inline transition hover:scale-105" href="tel:+917340426939">Call: +91 73404 26939</a>&nbsp;
+<span class="font-bold tracking-wide">DM SKILL INSTITUTE &amp; TALLY EDUCATION</span>&nbsp;
+<img alt="Tally Education" class="inline-block h-7 w-auto object-contain align-middle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnRmNYi8GiXta2J36lnbXwq-7z4rszxV-WylziSc5YeXjxNzZ9Gpg117nBWVO7u7gep2xo-cvLnDTFbKlkQdkBhqwTitDfil-J3WGimHmuizdK--l7LhwZoejV64__z_MoO8h8GfkWINxk83GC3UezkytdXxQ321A4Xtkl6jQ811q_nh7YNGkv42HjBvHhsf1RyW4sGoTSkp2KlpUujESOskNog91afs4WJgXRgLi1nvYkOGTDhj0B1DIzmFI00GM7Xw"/>
+</marquee>
+</div><!-- Header / Navigation -->
+<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-200">
+<div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap md:flex-nowrap items-center justify-between gap-2">
+<a class="flex items-center gap-2.5" href="index.html#home">
+<img alt="DM Skills Institute Logo" class="w-9 h-9 rounded-lg object-contain shadow-sm border border-brand-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4VQwefoo8x5ayZpkO-38hWwZMXLLW9roUfPhhL9Qid176l5xPnMB3K9H3M8Ezhcc-nG770O9CdIE9XM7NdvnXcZS-qXSpAo7cSO1oqpapWZIFLtQqbqiT6c6glLUz3OM1lpuKXAx1hAaW7qPsqw9O9cBWyflW_o19DVA7JSonxDF-YqEGL21jvAL5bhGyBYNVLYpjeONNXiXqUxfqLClq9Goyb67khqd5xkUbqp-Gd188lgeu11TyGEYxyQOZaRVjhg"/>
+<div class="leading-none">
+<span class="font-heading font-extrabold text-base text-slate-900 tracking-tight block">DM Skills <span class="text-brand-600">Institute</span></span>
+<span class="text-[10px] text-slate-500 font-medium tracking-wide uppercase">Alwar, Rajasthan</span>
+</div>
+</a>
+<!-- Navigation Links -->
+<div class="order-3 w-full md:order-none md:w-auto flex items-center gap-4 text-[11px] lg:text-sm font-semibold text-slate-600 overflow-x-auto whitespace-nowrap md:flex-1 md:justify-center">
+<a class="hover:text-brand-600 transition" href="index.html#home">Home</a>
+<a class="hover:text-brand-600 transition" href="index.html#courses">Courses</a>
+<a class="hover:text-brand-600 transition" href="index.html#why-us">Why Us</a>
+<a class="hover:text-brand-600 transition" href="index.html#faqs">FAQ's</a>
+<a class="hover:text-brand-600 transition" href="faculty.html#our-teachers">Faculty</a>
+<a class="hover:text-brand-600 transition" href="index.html#about">About</a>
+<a class="hover:text-brand-600 transition" href="index.html#contact">Contact</a>
+</div>
+<div class="flex items-center gap-2 shrink-0 md:ml-3">
+<div class="bg-slate-900 px-2 py-1 rounded-md border border-slate-700 flex items-center">
+<img alt="Tally Education Partner" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnRmNYi8GiXta2J36lnbXwq-7z4rszxV-WylziSc5YeXjxNzZ9Gpg117nBWVO7u7gep2xo-cvLnDTFbKlkQdkBhqwTitDfil-J3WGimHmuizdK--l7LhwZoejV64__z_MoO8h8GfkWINxk83GC3UezkytdXxQ321A4Xtkl6jQ811q_nh7YNGkv42HjBvHhsf1RyW4sGoTSkp2KlpUujESOskNog91afs4WJgXRgLi1nvYkOGTDhj0B1DIzmFI00GM7Xw"/>
+</div>
+<a aria-label="WhatsApp" class="w-8 h-8 rounded-full bg-brand-50 border border-brand-200 flex items-center justify-center text-brand-700 active:scale-95 transition-transform" href="https://wa.me/917340426939?text=Hello!%20I%20would%20like%20information%20about%20DM%20Skills%20Institute%20courses." rel="noopener noreferrer" target="_blank">
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.14 6.44 2.14 11.9c0 1.75.46 3.46 1.34 4.96L2 22l5.27-1.38c1.45.79 3.08 1.21 4.76 1.21h.01c5.46 0 9.9-4.44 9.9-9.9a9.85 9.85 0 0 0-2.9-7A9.85 9.85 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.13.82.83-3.05-.2-.31a8.22 8.22 0 0 1-1.26-4.39c0-4.55 3.7-8.25 8.26-8.25a8.2 8.2 0 0 1 5.84 2.42 8.2 8.2 0 0 1 2.42 5.84c0 4.55-3.71 8.24-8.27 8.24zm4.53-6.17c-.25-.12-1.48-.73-1.71-.81-.23-.09-.4-.13-.57.12-.17.26-.65.82-.8.99-.15.17-.3.19-.55.07-.25-.12-1.06-.39-2.02-1.24-.75-.66-1.25-1.48-1.4-1.73-.14-.25-.02-.39.11-.51.12-.11.25-.3.37-.45.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.12-.57-1.36-.78-1.86-.21-.49-.41-.42-.57-.43l-.49-.01c-.17 0-.45.06-.68.32-.23.25-.89.87-.89 2.12s.91 2.46 1.04 2.63c.13.17 1.79 2.73 4.34 3.83.61.26 1.08.42 1.45.54.61.19 1.17.16 1.61.1.49-.07 1.48-.61 1.69-1.2.21-.59.21-1.1.15-1.2-.07-.11-.24-.17-.49-.3z"/></svg>
+</a><a aria-label="Instagram" class="w-8 h-8 rounded-full bg-brand-50 border border-brand-200 flex items-center justify-center text-brand-700 hover:text-brand-800 active:scale-95 transition-transform" href="https://www.instagram.com/dm_skill_institute?stkn=bmZob3I1MmMyejh2" rel="noopener noreferrer" target="_blank"><svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a><a aria-label="Facebook" class="w-8 h-8 rounded-full bg-brand-50 border border-brand-200 flex items-center justify-center text-brand-700 hover:text-brand-800 active:scale-95 transition-transform" href="https://www.facebook.com/share/18DNtmLSNQ/?mibextid=wwXIfr" rel="noopener noreferrer" target="_blank"><svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></a>
+<a class="bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white text-xs font-bold px-3.5 py-2 rounded-full shadow-sm shadow-brand-600/30 whitespace-nowrap" href="/student/login">Student Login</a>
+<a class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-3.5 py-2 rounded-full shadow-sm shadow-slate-900/20 whitespace-nowrap" href="/employee/login">Employee Login</a>
+</div>
+</div>
+</nav>
+<section class="relative overflow-hidden bg-gradient-to-b from-brand-50/70 via-white to-white pt-8 pb-16 md:pt-16 md:pb-24 border-b border-brand-100/60" id="home">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="grid lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-7">
+<!-- Badges Row -->
+<div class="flex flex-wrap items-center gap-2 mb-4">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-100 border border-brand-300 text-brand-800 text-[11px] font-bold shadow-xs">
+<span class="w-2 h-2 rounded-full bg-brand-600 animate-ping"></span>
+    Alwar's No. 1 Practical Computer &amp; Accounting Institute
+  </div>
+<!-- Google Rating Badge -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-bold shadow-xs">
+<span class="text-amber-500">★★★★★</span>
+<span class="">4.9/5 (280+ Student Reviews)</span>
+</div>
+</div>
+<!-- Headline -->
+<h1 class="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+    Learn In-Demand Skills. <br/>
+<span class="text-brand-600 underline decoration-brand-200 decoration-wavy decoration-2 inline-block">Build Your Career in Alwar.</span>
+</h1>
+<p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+    Gain 100% practical lab training, certified accounting skills, and dedicated career guidance with job-oriented courses at DM Skills Institute, Alwar. Learn Tally Prime, GST, Advanced Excel, and RS-CIT in morning &amp; evening batches.
+</p>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-3 mb-6">
+<a class="py-3.5 px-6 rounded-xl bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-bold text-sm shadow-md shadow-brand-600/30 flex items-center justify-center gap-2 transition" href="courses.html#courses">
+<span class="">Explore 5 Courses &amp; Offers</span>
+<span class="material-symbols-outlined text-lg animate-bounce">arrow_downward</span>
+</a>
+<a class="py-3.5 px-6 rounded-xl bg-white border-2 border-brand-600 text-brand-700 hover:bg-brand-50 active:bg-brand-100 font-bold text-sm flex items-center justify-center gap-2 shadow-xs transition" href="https://wa.me/917340426939?text=Hello!%20I%20would%20like%20to%20enquire%20about%20admissions." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-lg text-green-600">chat</span>
+<span class="">WhatsApp Enquiry</span>
+</a>
+</div>
+<!-- Key Stats Grid -->
+<div class="grid grid-cols-3 gap-2 py-3 px-3 bg-brand-50/70 border border-brand-200/80 rounded-2xl text-center">
+<div>
+<div class="font-heading font-extrabold text-xl text-brand-700">100%</div>
+<div class="text-[11px] text-slate-600 font-medium leading-tight mt-0.5">Practical Computer Lab</div>
+</div>
+<div class="border-x border-brand-200/60 px-1">
+<div class="font-heading font-extrabold text-xl text-brand-700">Govt.</div>
+<div class="text-[11px] text-slate-600 font-medium leading-tight mt-0.5">Approved RS-CIT Center</div>
+</div>
+<div>
+<div class="font-heading font-extrabold text-xl text-brand-700">Job</div>
+<div class="text-[11px] text-slate-600 font-medium leading-tight mt-0.5">Placement Assistance</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5">
+<!-- Student Spotlight Photo & Badges -->
+<div class="relative bg-gradient-to-b from-brand-100/60 to-white rounded-3xl p-3 border border-brand-200/70 shadow-xl overflow-hidden">
+<div class="relative rounded-2xl overflow-hidden bg-white aspect-[4/3] flex items-center justify-center">
+<img alt="DM Skills Institute Student" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7odH7lltSiEvbrPF154uCfnomACKdieO6XbJG8XC7xk-MW_I77-QitmKDOpF-ifLaaDy_umTZD0LXxHulVnxRY7TvFQARPA6w7LwsB1c0IMU4-u_jJamH4fo2JKaavRqAwB3YYQZyVNURmkYzyHhQTrqvvXwPzmiMxHLOEXr8utRnLXZ23ibJ3B2IAJ3KIIpvrnZJ5Qp-iA8wSYX9GrQApxy1ffZas_60rmRs9Psw7uRqDvgze_sxfCLz2syNPT7j5A"/>
+<div class="absolute top-2 left-2 bg-white/95 backdrop-blur-md border border-brand-200 rounded-full px-2.5 py-1 flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-brand-600 text-xs">verified</span>
+<span class="text-[10px] font-bold text-brand-800">100% Practical Training</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-slate-900/90 backdrop-blur-md border border-slate-700 text-white rounded-full px-2.5 py-1 flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-green-400 text-xs">workspace_premium</span>
+<span class="text-[10px] font-bold text-white">Tally Certified</span>
+</div>
+</div>
+<!-- Tally Partner Banner strip -->
+<div class="mt-3 bg-slate-950 rounded-xl p-3 flex items-center justify-between gap-3 border border-slate-800 text-white">
+<div class="flex items-center gap-2.5">
+<img alt="Tally Education Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANXZbXsMD9R8cS9zMH_u92kVMkKYuhxdAt1b9nHxeG2NcySlrN7bl5wmDCLZPIKM2p9QiYYZlCZqPMOvFqsHFPMgXzveKydpMGLGREXQrcnFb-Fa061WcbwtWsgLdju6R8DU0sJNhZe1F1M-NPc2AlezlH4z-wQDB4sosMtuNbWLdFHUr5x9bFw8R_s1JYRMRkHUGx46BpS-zwu8vF-DfTMKJK-CQ8xU0vlLB3YrQ6psGJ7KcY0wHSU7rp3tyNI6v6-A"/>
+<div>
+<p class="text-xs font-bold text-white leading-tight">Official Training Partner</p>
+<p class="text-[10px] text-slate-400 leading-tight mt-0.5">TallyPrime Certification Alwar</p>
+</div>
+</div>
+<span class="text-[10px] font-bold bg-brand-600 px-2 py-1 rounded text-white shrink-0">Authorized</span>
+</div>
+<!-- Quick Campus Strip -->
+<div class="mt-3 p-2.5 bg-white rounded-xl border border-slate-200 flex items-center justify-between text-xs">
+<a class="flex items-center gap-2 group hover:text-brand-700 transition" href="https://maps.app.goo.gl/DbiW8RrZL16Sg2fr6?g_st=ic" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-brand-600 text-lg group-hover:scale-110 transition-transform">location_on</span>
+<span class="font-medium text-slate-700 group-hover:text-brand-700 group-hover:underline">Indian Tower, N.E.B., Alwar</span>
+</a>
+<a class="font-bold text-brand-700 hover:underline" href="tel:+917340426939">+91 73404 26939</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-20 bg-white scroll-mt-20" id="courses">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-16 reveal active">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-100 text-brand-800 text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
+  Official Programs &amp; Special Offers
+</div>
+<h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+  Our 5 Premier Job-Ready Courses
+</h2>
+<p class="mt-4 text-slate-600 text-base sm:text-lg">
+  Master in-demand accounting and computer applications with 100% practical lab training, industry-recognized certificates, and limited-time offer fees.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="reveal delay-100 relative bg-white rounded-2xl border-2 border-brand-500 shadow-xl px-6 pt-12 pb-6 flex flex-col justify-between hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 shimmer-card active">
+<div class="absolute top-3 left-1/2 -translate-x-1/2 z-10 whitespace-nowrap bg-brand-600 text-white px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow flex items-center gap-1 badge-pulse">
+<span class="material-symbols-outlined text-xs">star</span>
+      Flagship &amp; Most Popular
+    </div>
+<div>
+<div class="flex items-center justify-between mb-4 pt-2">
+<span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-2xl">workspace_premium</span>
+</span>
+<span class="text-xs font-bold bg-brand-50 text-brand-700 px-3 py-1 rounded-full border border-brand-200">
+          Course 01
+        </span>
+</div>
+<h3 class="font-heading text-xl font-bold text-slate-900 leading-snug mb-2">
+        Master Accountant using Tally
+      </h3>
+<p class="text-xs text-slate-500 mb-5 leading-relaxed">
+        Comprehensive master accounting program, advanced Tally Prime, complete taxation, balance sheet, corporate accounting &amp; financial auditing.
+      </p>
+<div class="bg-brand-50/70 border border-brand-200 rounded-xl p-4 mb-5">
+<div class="flex items-center justify-between text-xs text-slate-600 mb-2">
+<span class="font-medium">Duration:</span>
+<span class="font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-brand-100">1 Year (12 Months)</span>
+</div>
+<div class="flex items-baseline justify-between pt-2 border-t border-brand-200/60">
+<div>
+<span class="text-xs text-slate-500 block">Standard Fee:</span>
+<span class="text-xs text-slate-400 line-through font-semibold">₹60,000</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-bold text-brand-700 uppercase tracking-wide bg-brand-200/60 px-2 py-0.5 rounded inline-block mb-1">Save ₹10,000</span>
+<div class="font-heading font-extrabold text-2xl text-brand-700">₹50,000</div>
+<span class="text-[10px] text-brand-800 font-semibold block">Special Offer Fee</span>
+</div>
+</div>
+</div>
+<ul class="text-xs text-slate-600 space-y-2 mb-4">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>Complete Master Accounting</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>GST &amp; Corporate Audit</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>Financial Reporting &amp; Payroll</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>100% Placement Assistance</li>
+</ul>
+<button class="accordion-toggle w-full text-left text-xs font-bold text-brand-700 flex items-center justify-between py-2 px-3 bg-brand-50/60 hover:bg-brand-100 rounded-lg transition-colors mb-5" type="button">
+<span class="">View Detailed Syllabus Modules</span>
+<span class="material-symbols-outlined text-sm transition-transform duration-300 accordion-arrow">expand_more</span>
+</button>
+<div class="syllabus-details mb-4">
+<div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1.5">
+<p class="font-semibold text-slate-800">Module Breakdown:</p>
+<p class="">• Module 1: Accounting Fundamentals &amp; Voucher Entries</p>
+<p class="">• Module 2: Advanced Tally Prime &amp; Multi-Company Operations</p>
+<p class="">• Module 3: GST Computations, Input Tax Credit &amp; E-Invoicing</p>
+<p class="">• Module 4: Balance Sheet Finalization &amp; Corporate Taxation</p>
+</div>
+</div>
+</div>
+<a class="btn-interactive w-full text-center py-3 rounded-xl bg-brand-600 text-white font-bold text-sm hover:bg-brand-700 transition shadow-md shadow-brand-600/20" href="contact.html#enquiry-section" onclick="selectCourse('Master Accountant using Tally')">Enroll / Enquire Now →</a>
+</div>
+<div class="reveal delay-200 relative bg-white rounded-2xl border border-slate-200 shadow-md p-6 flex flex-col justify-between hover:border-brand-400 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 shimmer-card active">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="w-12 h-12 rounded-xl bg-slate-100 text-brand-700 flex items-center justify-center"><span class="material-symbols-outlined text-2xl">account_balance_wallet</span></span>
+<span class="text-xs font-bold bg-slate-100 text-slate-600 px-3 py-1 rounded-full">Course 02</span>
+</div>
+<h3 class="font-heading text-xl font-bold text-slate-900 leading-snug mb-2">Tally Professional</h3>
+<p class="text-xs text-slate-500 mb-5 leading-relaxed">Professional diploma in Tally accounting, inventory control, billing, ledger management, and commercial accounting practice.</p>
+<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-5">
+<div class="flex items-center justify-between text-xs text-slate-600 mb-2"><span class="font-medium">Duration:</span><span class="font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-slate-200">1 Year</span></div>
+<div class="flex items-baseline justify-between pt-2 border-t border-slate-200"><div><span class="text-xs text-slate-500 block">Standard Fee:</span><span class="text-xs text-slate-400 line-through font-semibold">₹40,000</span></div><div class="text-right"><span class="text-[10px] font-bold text-brand-700 uppercase tracking-wide bg-brand-100 px-2 py-0.5 rounded inline-block mb-1">Save ₹10,000</span><div class="font-heading font-extrabold text-2xl text-slate-900">₹30,000</div><span class="text-[10px] text-brand-700 font-semibold block">Special Offer Fee</span></div></div>
+</div>
+<ul class="text-xs text-slate-600 space-y-2 mb-4">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>Professional Accounting &amp; Ledgers</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>Multi-currency &amp; Cost Centres</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>Inventory &amp; Order Processing</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>Lab Practical &amp; Certification</li>
+</ul>
+<button class="accordion-toggle w-full text-left text-xs font-bold text-brand-700 flex items-center justify-between py-2 px-3 bg-slate-100 hover:bg-brand-50 rounded-lg transition-colors mb-5" type="button"><span class="">View Detailed Syllabus Modules</span><span class="material-symbols-outlined text-sm transition-transform duration-300 accordion-arrow">expand_more</span></button>
+<div class="syllabus-details mb-4"><div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1.5"><p class="font-semibold text-slate-800">Module Breakdown:</p><p class="">• Module 1: Company Creation &amp; Chart of Accounts</p><p class="">• Module 2: Stock Items, Batches &amp; Godown Management</p><p class="">• Module 3: Purchase Orders, Sales Quotations &amp; Billing</p><p class="">• Module 4: Bank Reconciliation &amp; Financial Statements</p></div></div>
+</div>
+<a class="btn-interactive w-full text-center py-3 rounded-xl bg-slate-900 text-white font-bold text-sm hover:bg-brand-600 transition" href="contact.html#enquiry-section" onclick="selectCourse('Tally Professional')">Enroll / Enquire Now →</a>
+</div>
+<div class="reveal delay-300 relative bg-white rounded-2xl border border-slate-200 shadow-md p-6 flex flex-col justify-between hover:border-brand-400 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 shimmer-card active">
+<div>
+<div class="flex items-center justify-between mb-4"><span class="w-12 h-12 rounded-xl bg-slate-100 text-brand-700 flex items-center justify-center"><span class="material-symbols-outlined text-2xl">receipt_long</span></span><span class="text-xs font-bold bg-slate-100 text-slate-600 px-3 py-1 rounded-full">Course 03</span></div>
+<h3 class="font-heading text-xl font-bold text-slate-900 leading-snug mb-2">GST using Tallyprime</h3>
+<p class="text-xs text-slate-500 mb-5 leading-relaxed">Focused certification on GST practical compliance, GSTR return filing, e-Way bills, e-Invoicing, and GST portal reconciliation using Tally Prime.</p>
+<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-5"><div class="flex items-center justify-between text-xs text-slate-600 mb-2"><span class="font-medium">Duration:</span><span class="font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-slate-200">3 Months</span></div><div class="flex items-baseline justify-between pt-2 border-t border-slate-200"><div><span class="text-xs text-slate-500 block">Standard Fee:</span><span class="text-xs text-slate-400 line-through font-semibold">₹15,000</span></div><div class="text-right"><span class="text-[10px] font-bold text-brand-700 uppercase tracking-wide bg-brand-100 px-2 py-0.5 rounded inline-block mb-1">Save ₹7,000</span><div class="font-heading font-extrabold text-2xl text-slate-900">₹8,000</div><span class="text-[10px] text-brand-700 font-semibold block">Special Offer Fee</span></div></div></div>
+<ul class="text-xs text-slate-600 space-y-2 mb-4">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>CGST, SGST &amp; IGST Invoicing</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>GSTR-1 &amp; GSTR-3B Return Filing</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>e-Way Bill &amp; e-Invoicing</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>Real-case practical projects</li>
+</ul>
+<button class="accordion-toggle w-full text-left text-xs font-bold text-brand-700 flex items-center justify-between py-2 px-3 bg-slate-100 hover:bg-brand-50 rounded-lg transition-colors mb-5" type="button"><span class="">View Detailed Syllabus Modules</span><span class="material-symbols-outlined text-sm transition-transform duration-300 accordion-arrow">expand_more</span></button>
+<div class="syllabus-details mb-4"><div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1.5"><p class="font-semibold text-slate-800">Module Breakdown:</p><p class="">• Module 1: GST Law Principles &amp; Rate Structures</p><p class="">• Module 2: Tax Invoicing &amp; E-Way Bill Generation</p><p class="">• Module 3: GST Portal Return Filing (GSTR-1, GSTR-3B)</p><p class="">• Module 4: ITC Reconciliation &amp; Annual Audit Support</p></div></div>
+</div>
+<a class="btn-interactive w-full text-center py-3 rounded-xl bg-slate-900 text-white font-bold text-sm hover:bg-brand-600 transition" href="contact.html#enquiry-section" onclick="selectCourse('GST using Tallyprime')">Enroll / Enquire Now →</a>
+</div>
+<div class="reveal delay-100 relative bg-white rounded-2xl border border-slate-200 shadow-md p-6 flex flex-col justify-between hover:border-brand-400 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 shimmer-card active">
+<div>
+<div class="flex items-center justify-between mb-4"><span class="w-12 h-12 rounded-xl bg-slate-100 text-brand-700 flex items-center justify-center"><span class="material-symbols-outlined text-2xl">table_view</span></span><span class="text-xs font-bold bg-slate-100 text-slate-600 px-3 py-1 rounded-full">Course 04</span></div>
+<h3 class="font-heading text-xl font-bold text-slate-900 leading-snug mb-2">Advance Excel</h3>
+<p class="text-xs text-slate-500 mb-5 leading-relaxed">Corporate-level data analytics, MIS reports, dynamic dashboards, advanced lookups and formulas for office and corporate jobs.</p>
+<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-5"><div class="flex items-center justify-between text-xs text-slate-600 mb-2"><span class="font-medium">Duration:</span><span class="font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-slate-200">3 Months</span></div><div class="flex items-baseline justify-between pt-2 border-t border-slate-200"><div><span class="text-xs text-slate-500 block">Standard Fee:</span><span class="text-xs text-slate-400 line-through font-semibold">₹6,000</span></div><div class="text-right"><span class="text-[10px] font-bold text-brand-700 uppercase tracking-wide bg-brand-100 px-2 py-0.5 rounded inline-block mb-1">Save ₹1,500</span><div class="font-heading font-extrabold text-2xl text-slate-900">₹4,500</div><span class="text-[10px] text-brand-700 font-semibold block">Special Offer Fee</span></div></div></div>
+<ul class="text-xs text-slate-600 space-y-2 mb-4">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>VLOOKUP, XLOOKUP &amp; INDEX-MATCH</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>Interactive Pivot Tables &amp; Charts</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>Automated MIS Reporting</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>Corporate Data Cleaning &amp; Analysis</li>
+</ul>
+<button class="accordion-toggle w-full text-left text-xs font-bold text-brand-700 flex items-center justify-between py-2 px-3 bg-slate-100 hover:bg-brand-50 rounded-lg transition-colors mb-5" type="button"><span class="">View Detailed Syllabus Modules</span><span class="material-symbols-outlined text-sm transition-transform duration-300 accordion-arrow">expand_more</span></button>
+<div class="syllabus-details mb-4"><div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1.5"><p class="font-semibold text-slate-800">Module Breakdown:</p><p class="">• Module 1: Excel Foundations &amp; Formatting</p><p class="">• Module 2: Advanced Formulas &amp; Logical Functions</p><p class="">• Module 3: Pivot Tables, Dashboards &amp; Charts</p><p class="">• Module 4: MIS Reporting &amp; Data Analysis Practice</p></div></div>
+</div>
+<a class="btn-interactive w-full text-center py-3 rounded-xl bg-slate-900 text-white font-bold text-sm hover:bg-brand-600 transition" href="contact.html#enquiry-section" onclick="selectCourse('Advance Excel')">Enroll / Enquire Now →</a>
+</div>
+<div class="reveal delay-200 relative bg-white rounded-2xl border border-slate-200 shadow-md p-6 flex flex-col justify-between hover:border-brand-400 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 shimmer-card active">
+<div>
+<div class="flex items-center justify-between mb-4"><span class="w-12 h-12 rounded-xl bg-slate-100 text-brand-700 flex items-center justify-center"><span class="material-symbols-outlined text-2xl">computer</span></span><span class="text-xs font-bold bg-slate-100 text-slate-600 px-3 py-1 rounded-full">Course 05</span></div>
+<h3 class="font-heading text-xl font-bold text-slate-900 leading-snug mb-2">RS-CIT (Rajasthan State Certificate in Information Technology)</h3>
+<p class="text-xs text-slate-500 mb-5 leading-relaxed">Government-recognized digital literacy course for students seeking practical computer skills, internet use, and foundational office technology competence.</p>
+<div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-5"><div class="flex items-center justify-between text-xs text-slate-600 mb-2"><span class="font-medium">Duration:</span><span class="font-bold text-slate-900 bg-white px-2 py-0.5 rounded border border-slate-200">3 Months</span></div><div class="flex items-baseline justify-between pt-2 border-t border-slate-200"><div><span class="text-xs text-slate-500 block">Standard Fee:</span><span class="text-xs text-slate-400 line-through font-semibold">₹5,000</span></div><div class="text-right"><span class="text-[10px] font-bold text-brand-700 uppercase tracking-wide bg-brand-100 px-2 py-0.5 rounded inline-block mb-1">Save ₹500</span><div class="font-heading font-extrabold text-2xl text-slate-900">₹4,500</div><span class="text-[10px] text-brand-700 font-semibold block">Special Offer Fee</span></div></div></div>
+<ul class="text-xs text-slate-600 space-y-2 mb-4">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>Digital literacy and office productivity</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>Windows, internet &amp; practical computer basics</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>MS Office application skills</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-base">check</span>Government-recognized certificate support</li>
+</ul>
+<button class="accordion-toggle w-full text-left text-xs font-bold text-brand-700 flex items-center justify-between py-2 px-3 bg-slate-100 hover:bg-brand-50 rounded-lg transition-colors mb-5" type="button"><span class="">View Detailed Syllabus Modules</span><span class="material-symbols-outlined text-sm transition-transform duration-300 accordion-arrow">expand_more</span></button>
+<div class="syllabus-details mb-4"><div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1.5"><p class="font-semibold text-slate-800">Module Breakdown:</p><p class="">• Module 1: Computer Basics &amp; Internet Literacy</p><p class="">• Module 2: MS Office Tools &amp; Document Creation</p><p class="">• Module 3: Spreadsheet &amp; Presentation Skills</p><p class="">• Module 4: Practical Digital Workflow &amp; Certification Preparation</p></div></div>
+</div>
+<a class="btn-interactive w-full text-center py-3 rounded-xl bg-slate-900 text-white font-bold text-sm hover:bg-brand-600 transition" href="contact.html#enquiry-section" onclick="selectCourse('RS-CIT')">Enroll / Enquire Now →</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="why-us" class="bg-white py-16 md:py-20">
+  <div class="max-w-7xl mx-auto px-4" id="about">
+    <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.25em] text-brand-700">Why Choose Us</p>
+        <h2 class="mt-3 font-heading font-extrabold text-3xl md:text-4xl text-slate-900">Career-focused learning with practical support</h2>
+        <p class="mt-4 text-sm md:text-base text-slate-600">DM Skills Institute blends classroom learning, trainer guidance, and an outcome-first approach so students can build confidence and job-ready skills in a short time.</p>
+
+        <div class="mt-8 space-y-5">
+          <div class="flex gap-4 items-start rounded-2xl bg-slate-50 border border-slate-200 p-4">
+            <span class="material-symbols-outlined text-brand-700 text-3xl">school</span>
+            <div>
+              <h3 class="font-heading font-bold text-lg text-slate-900">Experienced trainers</h3>
+              <p class="mt-1 text-sm text-slate-600">Learn from instructors who focus on real-world business workflows and practical understanding.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start rounded-2xl bg-slate-50 border border-slate-200 p-4">
+            <span class="material-symbols-outlined text-brand-700 text-3xl">workspace_premium</span>
+            <div>
+              <h3 class="font-heading font-bold text-lg text-slate-900">Skill-based teaching</h3>
+              <p class="mt-1 text-sm text-slate-600">Every module is designed to improve confidence, employability, and productivity in office and finance environments.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start rounded-2xl bg-slate-50 border border-slate-200 p-4">
+            <span class="material-symbols-outlined text-brand-700 text-3xl">support_agent</span>
+            <div>
+              <h3 class="font-heading font-bold text-lg text-slate-900">Student-friendly guidance</h3>
+              <p class="mt-1 text-sm text-slate-600">We help students choose the right course path and support them with simple, clear guidance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-3xl bg-gradient-to-br from-brand-700 via-brand-600 to-brand-500 p-8 text-white shadow-xl shadow-brand-600/20">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-2xl bg-white/10 border border-white/20 p-4 backdrop-blur-sm">
+            <p class="text-3xl font-extrabold">5+</p>
+            <p class="mt-2 text-xs uppercase tracking-wide text-brand-50">Career Tracks</p>
+          </div>
+          <div class="rounded-2xl bg-white/10 border border-white/20 p-4 backdrop-blur-sm">
+            <p class="text-3xl font-extrabold">100%</p>
+            <p class="mt-2 text-xs uppercase tracking-wide text-brand-50">Practical Training</p>
+          </div>
+          <div class="rounded-2xl bg-white/10 border border-white/20 p-4 backdrop-blur-sm">
+            <p class="text-3xl font-extrabold">1:1</p>
+            <p class="mt-2 text-xs uppercase tracking-wide text-brand-50">Guided Learning</p>
+          </div>
+          <div class="rounded-2xl bg-white/10 border border-white/20 p-4 backdrop-blur-sm">
+            <p class="text-3xl font-extrabold">24/7</p>
+            <p class="mt-2 text-xs uppercase tracking-wide text-brand-50">Admission Support</p>
+          </div>
+        </div>
+        <a href="contact.html#enquiry-section" class="mt-8 inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-bold text-brand-700 hover:bg-brand-50 transition">Book a Counselling Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOUNDER & DIRECTOR ============ -->
+<section id="founder" class="bg-slate-50 py-16 md:py-20 border-t border-slate-200 scroll-mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+      <!-- Founder Image -->
+      <div class="flex justify-center">
+        <div class="relative w-full max-w-sm">
+          <div class="relative bg-white p-2.5 rounded-3xl border-2 border-brand-500 shadow-xl overflow-hidden">
+            <div class="aspect-[3/4] rounded-2xl overflow-hidden bg-slate-100">
+              <img alt="Dharamendra Singh Sekawat, Founder and Director of DM Skills Institute" class="w-full h-full object-cover object-top" src="/assets/images/dharamendra-singh-sekawat.jpg">
+            </div>
+            <div class="absolute bottom-5 left-5 right-5 bg-slate-950/90 backdrop-blur-md border border-slate-800 rounded-xl py-2.5 px-4 text-center text-white shadow-lg">
+              <div class="text-xs font-bold text-brand-400 uppercase tracking-wider">Founder &amp; Director</div>
+              <div class="text-[11px] text-slate-300">DM Skills Institute, Alwar</div>
+            </div>
+          </div>
+          <div class="absolute -top-3 -right-3 w-14 h-14 rounded-full border-4 border-white bg-brand-500 shadow-lg" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <!-- Founder Information -->
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.25em] text-brand-700">Leadership &amp; Vision</p>
+        <h2 class="mt-3 font-heading font-extrabold text-3xl md:text-4xl text-slate-900">Dharmendra Singh Sekhawat</h2>
+        <p class="mt-2 text-sm font-semibold text-brand-700">Founder &amp; Director, DM Skills Institute</p>
+
+        <div class="mt-6 relative bg-white rounded-2xl p-6 border border-brand-200/70 shadow-sm">
+          <span class="material-symbols-outlined text-3xl text-brand-200 absolute top-4 right-4 select-none" aria-hidden="true">format_quote</span>
+          <p class="text-sm md:text-base text-slate-700 leading-relaxed italic relative z-10">"Our goal at DM Skills Institute is to make every youth in Alwar employable with real practical skills in modern accounting, Tally Prime, GST, and computer technologies. We believe in 100% hands-on learning so our students step directly into promising careers with confidence."</p>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="bg-white rounded-xl p-4 border border-slate-200 text-center shadow-xs">
+            <span class="material-symbols-outlined text-brand-600 text-2xl mb-1 block" aria-hidden="true">school</span>
+            <div class="font-heading font-extrabold text-lg text-slate-900">10+ Years</div>
+            <div class="text-[11px] text-slate-600 leading-tight mt-0.5">Educational Leadership</div>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-slate-200 text-center shadow-xs">
+            <span class="material-symbols-outlined text-brand-600 text-2xl mb-1 block" aria-hidden="true">verified</span>
+            <div class="font-heading font-extrabold text-lg text-slate-900">Tally Certified</div>
+            <div class="text-[11px] text-slate-600 leading-tight mt-0.5">Authorized Training</div>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-slate-200 text-center shadow-xs">
+            <span class="material-symbols-outlined text-brand-600 text-2xl mb-1 block" aria-hidden="true">groups</span>
+            <div class="font-heading font-extrabold text-lg text-slate-900">1,200+</div>
+            <div class="text-[11px] text-slate-600 leading-tight mt-0.5">Students Mentored</div>
+          </div>
+        </div>
+
+        <a href="contact.html#enquiry-section" class="mt-6 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-md shadow-brand-600/30 transition">
+          <span class="material-symbols-outlined text-lg" aria-hidden="true">send</span>
+          <span>Connect for Admission &amp; Guidance</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faqs" class="bg-slate-50 py-16 md:py-20 border-t border-slate-200">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <p class="text-xs font-bold uppercase tracking-[0.25em] text-brand-700">FAQ's</p>
+      <h2 class="mt-3 font-heading font-extrabold text-3xl md:text-4xl text-slate-900">Questions students usually ask</h2>
+    </div>
+
+    <div class="space-y-3">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm">
+        <button type="button" class="faq-toggle w-full flex items-center justify-between gap-4 px-5 py-4 text-left text-base font-semibold text-slate-900">
+          <span>Are the courses beginner-friendly?</span>
+          <span class="faq-arrow material-symbols-outlined text-xl text-brand-700">add_circle</span>
+        </button>
+        <div class="faq-details px-5 pb-5 text-sm text-slate-600">
+          Yes. Many courses are designed for beginners and students who want practical, simple-to-follow training with everyday examples.
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm">
+        <button type="button" class="faq-toggle w-full flex items-center justify-between gap-4 px-5 py-4 text-left text-base font-semibold text-slate-900">
+          <span>Do you support career counselling?</span>
+          <span class="faq-arrow material-symbols-outlined text-xl text-brand-700">add_circle</span>
+        </button>
+        <div class="faq-details px-5 pb-5 text-sm text-slate-600">
+          Yes. We help students understand the right course based on their interest, level, and career goal before admission.
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm">
+        <button type="button" class="faq-toggle w-full flex items-center justify-between gap-4 px-5 py-4 text-left text-base font-semibold text-slate-900">
+          <span>Are classes practical and job-oriented?</span>
+          <span class="faq-arrow material-symbols-outlined text-xl text-brand-700">add_circle</span>
+        </button>
+        <div class="faq-details px-5 pb-5 text-sm text-slate-600">
+          Absolutely. The training is designed around real tasks, business scenarios, and job-related skills that are useful in daily office work.
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm">
+        <button type="button" class="faq-toggle w-full flex items-center justify-between gap-4 px-5 py-4 text-left text-base font-semibold text-slate-900">
+          <span>How can I apply for admission?</span>
+          <span class="faq-arrow material-symbols-outlined text-xl text-brand-700">add_circle</span>
+        </button>
+        <div class="faq-details px-5 pb-5 text-sm text-slate-600">
+          You can call the helpline or submit the enquiry form on the website. We will guide you on the best course and next steps.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- FOOTER (GREEN & WHITE) -->
+<footer id="contact" class="bg-white border-t border-slate-200 pt-16 pb-12">
+<div class="px-4 py-10 max-w-7xl mx-auto">
+<div class="grid md:grid-cols-12 gap-8 mb-10 pb-8 border-b border-slate-200">
+<div class="md:col-span-5">
+<div class="flex items-center gap-3 mb-3">
+<img alt="DM Skills Institute Logo" class="w-10 h-10 rounded-xl object-contain shadow-sm border border-brand-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlnqNmAF2GWdVmxH5-XxscLddWlr7EF748ZOkQPswOLuPM623K6x-ihUzJHuYl6Zy35oOrh7n-wada5HgSphOvS9J3n2mmQAUU9nbMVFDRkXLdL5sx1QQQ1FO244bR2N2lP8QRM3OCJPy9N9wQup9Wef8ljkVWg304Dqr2PWbjaXQ8gKdJzo8NGC7F2ITvoc1X6ZSTtdTA6vPFsTlU5s9O0q5_D2aCQuoFLe6A35857z44jr6-NEEeBfrSDeSJ3m8YcA"/>
+<div>
+<span class="font-heading font-bold text-lg text-slate-900 block leading-tight">DM Skills Institute</span>
+<span class="text-[11px] text-slate-500 uppercase tracking-wide">Alwar, Rajasthan</span>
+</div>
+</div>
+<p class="text-xs text-slate-600 leading-relaxed mb-4 max-w-md">
+      Learn Skills. Build Your Career. Committed to delivering practical computer &amp; accounting education for students across Alwar.
+    </p>
+<!-- Official Tally partner footer banner -->
+<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex items-center gap-3 max-w-sm">
+<img alt="Tally Education Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqLxvI7n8pK3C5L4zSkunLGQ7D7C1fFlR8n_08hXK_ljkyrl7jI-Yb0RVnBK2izDVhAaE-lGSeBvH4MpMN_m6FWix1-RpirK3f3E4G0SyvqS8bZObtCXZFP_aTbQtBq9JgwREsDbJCoOlVKjUQha46WD5aYsfOE9d01VI5pmYMuvn4K0kcFchFHX9l6X_BKUBCzLRncoEmfCXM92Ab4eo3enxKrxzp6QwT3lg_6aAUIc4qn7a9wQzsUzsCXn9NRRZsKw"/>
+<div class="text-white leading-tight">
+<span class="text-xs font-bold block text-white">Authorized Tally Partner</span>
+<span class="text-[10px] text-slate-400">Practical GST &amp; TallyPrime Certifications</span>
+</div>
+</div><div class="mt-4 flex items-center gap-2"><span class="text-xs text-slate-500 font-semibold">Follow Us:</span><a aria-label="Instagram" class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 hover:text-brand-700 hover:bg-brand-50 transition" href="https://www.instagram.com/dm_skill_institute?stkn=bmZob3I1MmMyejh2" rel="noopener noreferrer" target="_blank"><svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a><a aria-label="Facebook" class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 hover:text-brand-700 hover:bg-brand-50 transition" href="https://www.facebook.com/share/18DNtmLSNQ/?mibextid=wwXIfr" rel="noopener noreferrer" target="_blank"><svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></a></div>
+</div>
+<div class="md:col-span-3">
+<h4 class="font-heading font-bold text-slate-900 uppercase tracking-wider mb-3 text-xs">Our Courses</h4>
+<ul class="space-y-2 text-xs text-slate-600">
+<li class=""><a class="hover:text-brand-600 transition" href="courses.html#courses">Master Accountant using Tally</a></li>
+<li class=""><a class="hover:text-brand-600 transition" href="courses.html#courses">Tally Professional Diploma</a></li>
+<li class=""><a class="hover:text-brand-600 transition" href="courses.html#courses">GST using Tallyprime</a></li>
+<li class=""><a class="hover:text-brand-600 transition" href="courses.html#courses">Advance Excel with MIS</a></li>
+<li class=""><a class="hover:text-brand-600 transition" href="courses.html#courses">RS-CIT Govt. Diploma</a></li>
+</ul>
+</div>
+<div class="md:col-span-4">
+<h4 class="font-heading font-bold text-slate-900 uppercase tracking-wider mb-3 text-xs">Campus &amp; Admissions</h4>
+<a class="block text-xs text-slate-600 leading-relaxed mb-2 hover:text-brand-700 hover:underline group" href="https://maps.app.goo.gl/DbiW8RrZL16Sg2fr6?g_st=ic" rel="noopener noreferrer" target="_blank">
+      Indian Tower, N.E.B., Alwar, Rajasthan - 301001
+    </a>
+<p class="text-xs font-bold text-brand-700 mb-1"><a class="" href="tel:+917340426939">Phone: +91 73404 26939</a></p>
+<p class="text-[11px] text-slate-500">Office Timings: Mon - Sat: 8:00 AM - 7:00 PM</p>
+</div>
+</div>
+<div class="text-center text-[11px] text-slate-500">
+<p class="">© 2026 DM Skills Institute, Alwar. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<!-- STICKY MOBILE FLOATING BOTTOM ACTION BAR -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-t border-slate-200 px-3 py-2.5 shadow-2xl flex items-center justify-between gap-2.5">
+<a class="flex-1 py-3 px-2 rounded-xl bg-slate-900 active:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm" href="tel:+917340426939">
+<span class="material-symbols-outlined text-base text-brand-400">call</span>
+<span class="">Call Helpline</span>
+</a>
+<a class="flex-1 py-3 px-2 rounded-xl bg-brand-600 active:bg-brand-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-brand-600/30" href="https://wa.me/917340426939?text=Hello!%20I%20am%20interested%20in%20DM%20Skills%20Institute%20courses.%20Please%20share%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-base">chat</span>
+<span class="">WhatsApp Enquiry</span>
+</a>
+<a class="p-2.5 rounded-xl bg-brand-50 border border-brand-200 text-brand-700 flex items-center justify-center" href="contact.html#enquiry-section" title="Admission Form">
+<span class="material-symbols-outlined text-base">edit_note</span>
+</a><a aria-label="Instagram" class="p-2.5 rounded-xl bg-brand-50 border border-brand-200 text-brand-700 flex items-center justify-center" href="https://www.instagram.com/dm_skill_institute?stkn=bmZob3I1MmMyejh2" rel="noopener noreferrer" target="_blank"><svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a><a aria-label="Facebook" class="p-2.5 rounded-xl bg-brand-50 border border-brand-200 text-brand-700 flex items-center justify-center" href="https://www.facebook.com/share/18DNtmLSNQ/?mibextid=wwXIfr" rel="noopener noreferrer" target="_blank"><svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></a>
+</div>
+<!-- JS Logic for Animations, Syllabus Accordion, FAQ Accordion, & Form Submission -->
+<script>
+// Scroll Reveal via IntersectionObserver
+const revealElements = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -30px 0px'
+  });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+} else {
+  revealElements.forEach(el => el.classList.add('active'));
+}
+
+// Course Syllabus Accordion Toggle
+const accordionToggles = document.querySelectorAll('.accordion-toggle');
+accordionToggles.forEach(toggle => {
+  toggle.addEventListener('click', function() {
+    const details = this.nextElementSibling;
+    const arrow = this.querySelector('.accordion-arrow');
+    const isOpen = details.classList.contains('open');
+
+    if (isOpen) {
+      details.classList.remove('open');
+      if (arrow) arrow.style.transform = 'rotate(0deg)';
+      this.querySelector('span').textContent = 'View Detailed Syllabus Modules';
+    } else {
+      details.classList.add('open');
+      if (arrow) arrow.style.transform = 'rotate(180deg)';
+      this.querySelector('span').textContent = 'Hide Detailed Syllabus Modules';
+    }
+  });
+});
+
+// FAQ Accordion Toggle
+const faqToggles = document.querySelectorAll('.faq-toggle');
+faqToggles.forEach(toggle => {
+  toggle.addEventListener('click', function() {
+    const details = this.nextElementSibling;
+    const arrow = this.querySelector('.faq-arrow');
+    const isOpen = details.classList.contains('open');
+
+    // Close all other FAQs
+    faqToggles.forEach(otherToggle => {
+      if (otherToggle !== toggle) {
+        const otherDetails = otherToggle.nextElementSibling;
+        const otherArrow = otherToggle.querySelector('.faq-arrow');
+        if (otherDetails) otherDetails.classList.remove('open');
+        if (otherArrow) {
+          otherArrow.textContent = 'add_circle';
+          otherArrow.style.transform = 'rotate(0deg)';
+        }
+      }
+    });
+
+    if (isOpen) {
+      details.classList.remove('open');
+      if (arrow) {
+        arrow.textContent = 'add_circle';
+        arrow.style.transform = 'rotate(0deg)';
+      }
+    } else {
+      details.classList.add('open');
+      if (arrow) {
+        arrow.textContent = 'remove_circle';
+        arrow.style.transform = 'rotate(180deg)';
+      }
+    }
+  });
+});
+
+// Auto select course in form & smooth scroll to enquiry section
+function selectCourse(courseName) {
+  sessionStorage.setItem('dmSkillsSelectedCourse', courseName);
+  const select = document.getElementById('courseSelect');
+  if (select) {
+    for (let i = 0; i < select.options.length; i++) {
+      if (select.options[i].text.includes(courseName) || select.options[i].value.includes(courseName)) {
+        select.selectedIndex = i;
+        break;
+      }
+    }
+  }
+}
+
+// Handle Form WhatsApp Submission
+    const savedCourse = sessionStorage.getItem('dmSkillsSelectedCourse');
+    const courseSelect = document.getElementById('courseSelect');
+    if (courseSelect && savedCourse) {
+      for (let i = 0; i < courseSelect.options.length; i++) {
+        if (courseSelect.options[i].text.includes(savedCourse) || courseSelect.options[i].value.includes(savedCourse)) {
+          courseSelect.selectedIndex = i;
+          break;
+        }
+      }
+      sessionStorage.removeItem('dmSkillsSelectedCourse');
+    }
+const form = document.getElementById('admissionForm');
+const formStatus = document.getElementById('formStatus');
+
+if (form) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('studentName').value.trim();
+    const phone = document.getElementById('studentPhone').value.trim();
+    const course = document.getElementById('courseSelect').value;
+    const msg = document.getElementById('studentMsg').value.trim();
+
+    if(!name || !phone) {
+      alert("Please enter your name and phone number.");
+      return;
+    }
+
+    const messageText = `*DM Skills Institute, Alwar - New Admission Enquiry*\n\n` +
+      `👤 *Student Name:* ${name}\n` +
+      `📱 *Mobile Number:* ${phone}\n` +
+      `📚 *Selected Course:* ${course}\n` +
+      (msg ? `💬 *Message/Batch Query:* ${msg}\n` : '') +
+      `\n_Sent from official website enquiry form._`;
+
+    const encodedMsg = encodeURIComponent(messageText);
+    const whatsappUrl = `https://wa.me/917340426939?text=${encodedMsg}`;
+
+    formStatus.textContent = "Opening WhatsApp, please wait...";
+    window.open(whatsappUrl, '_blank');
+  });
+}
+</script>
+<script src="/js/admission-popup.js" defer></script>
+<script src="/js/demoe.js" defer></script>
+</body></html>

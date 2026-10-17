@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard | DM Skills Institute</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#f0fdf4',
+                100: '#dcfce7',
+                200: '#bbf7d0',
+                300: '#86efac',
+                400: '#4ade80',
+                500: '#22c55e',
+                600: '#16a34a',
+                700: '#15803d',
+                800: '#166534',
+                900: '#14532d',
+                950: '#052e16'
+              }
+            },
+            fontFamily: {
+              heading: ['Plus Jakarta Sans', 'sans-serif'],
+              body: ['Inter', 'sans-serif']
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="font-body bg-slate-100 text-slate-800" data-auth-role="student">
+    <div class="min-h-screen flex flex-col md:flex-row">
+      <aside class="w-full bg-slate-900 p-4 text-white md:sticky md:top-0 md:h-screen md:w-[260px] md:flex-shrink-0 md:overflow-y-auto md:p-6">
+        <div class="mb-4 flex items-center gap-3 md:mb-8">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4VQwefoo8x5ayZpkO-38hWwZMXLLW9roUfPhhL9Qid176l5xPnMB3K9H3M8Ezhcc-nG770O9CdIE9XM7NdvnXcZS-qXSpAo7cSO1oqpapWZIFLtQqbqiT6c6glLUz3OM1lpuKXAx1hAaW7qPsqw9O9cBWyflW_o19DVA7JSonxDF-YqEGL21jvAL5bhGyBYNVLYpjeONNXiXqUxfqLClq9Goyb67khqd5xkUbqp-Gd188lgeu11TyGEYxyQOZaRVjhg" alt="DM Skills Institute" class="h-11 w-11 rounded-lg object-contain border border-brand-700 bg-white/5" />
+          <div>
+            <p class="font-heading text-lg font-extrabold leading-tight">DM Skills</p>
+            <p class="text-[10px] uppercase tracking-wide text-slate-300">Student Dashboard</p>
+          </div>
+        </div>
+
+        <nav class="grid grid-cols-2 gap-2 text-sm md:grid-cols-1">
+          <a href="/student/dashboard#overview" class="block rounded-xl bg-brand-600 px-3 py-2 font-semibold text-white">Overview</a>
+          <a href="/student/dashboard#profile" class="block rounded-xl px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">My Profile</a>
+          <a href="/student/dashboard#course" class="block rounded-xl px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">My Course</a>
+          <a href="/student/dashboard#attendance" class="block rounded-xl px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Attendance</a>
+          <a href="/student/dashboard#assignments" class="block rounded-xl px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Assignments</a>
+          <a href="/student/dashboard#materials" class="block rounded-xl px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Study Material</a>
+          <a href="/student/dashboard#fees" class="block rounded-xl px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Fees</a>
+          <a href="/student/dashboard#results" class="block rounded-xl px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Results</a>
+          <a href="/student/dashboard#announcements" class="block rounded-xl px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Announcements</a>
+          <button type="button" data-password-security class="block rounded-xl px-3 py-2 text-left text-slate-300 hover:bg-slate-800 hover:text-white">Security</button>
+          <button type="button" data-logout class="mt-6 w-full rounded-xl border border-slate-700 px-3 py-2 text-left font-medium text-slate-200 hover:bg-slate-800">Logout</button>
+        </nav>
+      </aside>
+
+      <main class="flex-1 p-5 md:p-8">
+        <div id="overview" class="mb-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p class="text-xs uppercase tracking-[0.22em] text-brand-700">Dashboard</p>
+            <h1 class="font-heading text-3xl font-extrabold text-slate-900">Welcome, <span data-user-name>Student</span></h1>
+            <p class="mt-2 text-sm text-red-700" role="status" data-dashboard-status></p>
+          </div>
+          <div class="rounded-2xl border border-brand-200 bg-white px-4 py-3 shadow-sm">
+            <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Account</p>
+            <p class="mt-1 text-sm font-semibold text-brand-700" data-account-id>Student Portal</p>
+          </div>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div id="course" class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+            <p class="text-sm text-slate-500">My Course</p>
+            <h2 class="mt-2 font-heading text-xl font-extrabold text-slate-900" data-course-name>Not assigned</h2>
+            <p class="mt-2 text-sm text-brand-700" data-course-duration></p>
+            <p class="mt-1 text-sm text-slate-600">Instructor: <span data-course-instructor>—</span></p>
+            <p class="mt-1 text-sm text-slate-600">Started: <span data-course-start-date>—</span></p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+            <p class="text-sm text-slate-500">Attendance</p>
+            <h2 class="mt-2 font-heading text-2xl font-extrabold text-slate-900"><span data-attendance-percent>0</span>%</h2>
+            <p class="mt-2 text-sm text-slate-600" data-attendance-summary>No attendance recorded</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+            <p class="text-sm text-slate-500">Assignments</p>
+            <h2 class="mt-2 font-heading text-2xl font-extrabold text-slate-900" data-assignment-count>0</h2>
+            <p class="mt-2 text-sm text-amber-700">Available assignments</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+            <p class="text-sm text-slate-500">Outstanding Fees</p>
+            <h2 class="mt-2 font-heading text-2xl font-extrabold text-slate-900" data-fees-due>₹0</h2>
+            <p class="mt-2 text-sm text-brand-700" data-fees-status>No fee records</p>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-6 xl:grid-cols-[1.4fr_0.9fr]">
+          <div id="profile" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="mb-4 flex items-center justify-between">
+              <h3 class="font-heading text-xl font-extrabold text-slate-900">Student Profile</h3>
+              <span class="rounded-full bg-brand-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-brand-800">Student</span>
+            </div>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-xs uppercase tracking-wide text-slate-500">Name</p>
+                <p class="mt-2 font-semibold text-slate-900" data-user-name>—</p>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-xs uppercase tracking-wide text-slate-500">Role</p>
+                <p class="mt-2 font-semibold text-slate-900" data-user-role>Student</p>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-xs uppercase tracking-wide text-slate-500">Mobile</p>
+                <p class="mt-2 font-semibold text-slate-900" data-user-phone>—</p>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-xs uppercase tracking-wide text-slate-500">Email</p>
+                <p class="mt-2 font-semibold text-slate-900" data-user-email>—</p>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-xs uppercase tracking-wide text-slate-500">Student ID</p>
+                <p class="mt-2 font-semibold text-slate-900" data-account-id>—</p>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-xs uppercase tracking-wide text-slate-500">Admission Date</p>
+                <p class="mt-2 font-semibold text-slate-900" data-admission-date>—</p>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-xs uppercase tracking-wide text-slate-500">Status</p>
+                <p class="mt-2 font-semibold text-slate-900" data-account-status>—</p>
+              </div>
+            </div>
+            <form class="mt-5 grid gap-3 border-t border-slate-200 pt-5 sm:grid-cols-2" data-profile-form>
+              <label class="grid gap-1 text-xs font-semibold text-slate-600">Phone
+                <input name="phone" maxlength="30" disabled class="rounded-lg border-slate-300 text-sm">
+              </label>
+              <label class="grid gap-1 text-xs font-semibold text-slate-600">Email
+                <input name="email" type="email" maxlength="254" disabled class="rounded-lg border-slate-300 text-sm">
+              </label>
+              <label class="grid gap-1 text-xs font-semibold text-slate-600 sm:col-span-2">Address
+                <textarea name="address" maxlength="2000" disabled class="rounded-lg border-slate-300 text-sm"></textarea>
+              </label>
+              <button type="button" data-profile-edit class="rounded-lg border border-brand-600 px-4 py-2 text-sm font-bold text-brand-700 hover:bg-brand-50">Edit Profile</button>
+              <button type="button" data-profile-cancel hidden class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-bold text-slate-700 hover:bg-slate-50">Cancel</button>
+              <button type="submit" hidden class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-bold text-white hover:bg-brand-700 sm:col-span-2">Save Changes</button>
+              <p data-form-status role="status" aria-live="polite" class="text-sm text-slate-500 sm:col-span-2"></p>
+            </form>
+          </div>
+
+          <div id="announcements" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h3 class="font-heading text-xl font-extrabold text-slate-900">Announcements</h3>
+            <ul class="mt-4 space-y-3 text-sm text-slate-600" data-announcements>
+              <li class="rounded-2xl bg-slate-50 p-3 border border-slate-200">No announcements yet.</li>
+            </ul>
+          </div>
+        </div>
+        <section id="attendance" class="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="font-heading text-xl font-bold">Attendance</h2>
+          <div class="mt-4 overflow-x-auto"><table class="w-full min-w-[520px] text-left text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="px-4 py-3">Date</th><th class="px-4 py-3">Course</th><th class="px-4 py-3">Status</th><th class="px-4 py-3">Remarks</th></tr></thead><tbody data-student-attendance><tr><td colspan="4" class="px-4 py-3 text-slate-500">Loading attendance…</td></tr></tbody></table></div>
+        </section>
+        <section id="assignments" class="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="font-heading text-xl font-bold">Assignments</h2>
+          <div class="mt-4 overflow-x-auto"><table class="w-full min-w-[720px] text-left text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="px-4 py-3">Title</th><th class="px-4 py-3">Course</th><th class="px-4 py-3">Due date</th><th class="px-4 py-3">Status</th><th class="px-4 py-3">Details</th></tr></thead><tbody data-student-assignments><tr><td colspan="5" class="px-4 py-3 text-slate-500">Loading assignments…</td></tr></tbody></table></div>
+        </section>
+        <section id="materials" class="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="font-heading text-xl font-bold">Study Material</h2>
+          <div class="mt-4 overflow-x-auto"><table class="w-full min-w-[520px] text-left text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="px-4 py-3">Title</th><th class="px-4 py-3">Course</th><th class="px-4 py-3">Resource</th></tr></thead><tbody data-student-materials><tr><td colspan="3" class="px-4 py-3 text-slate-500">Loading materials…</td></tr></tbody></table></div>
+        </section>
+        <section id="fees" class="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="font-heading text-xl font-bold">Fees</h2>
+          <div class="mt-4 overflow-x-auto"><table class="w-full min-w-[620px] text-left text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="px-4 py-3">Course</th><th class="px-4 py-3">Total</th><th class="px-4 py-3">Paid</th><th class="px-4 py-3">Due</th><th class="px-4 py-3">Status</th></tr></thead><tbody data-student-fees><tr><td colspan="5" class="px-4 py-3 text-slate-500">Loading fee records…</td></tr></tbody></table></div>
+        </section>
+        <section id="results" class="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="font-heading text-xl font-bold">Results</h2>
+          <div class="mt-4 overflow-x-auto"><table class="w-full min-w-[520px] text-left text-sm"><thead class="bg-slate-50 text-slate-500"><tr><th class="px-4 py-3">Subject</th><th class="px-4 py-3">Course</th><th class="px-4 py-3">Marks</th><th class="px-4 py-3">Grade</th></tr></thead><tbody data-student-results><tr><td colspan="4" class="px-4 py-3 text-slate-500">Loading results…</td></tr></tbody></table></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/js/portal.js"></script>
+  </body>
+</html>
