@@ -9,6 +9,7 @@ class Config:
     SESSION_COOKIE_SECURE = os.environ.get("COOKIE_SECURE", "false").lower() == "true"
     PERMANENT_SESSION_LIFETIME = timedelta(hours=8)
     MAX_CONTENT_LENGTH = 1_048_576
+    DB_POOL_SIZE = int(os.environ.get("DB_POOL_SIZE", "15"))
     DB_HOST = os.environ.get("DB_HOST", "localhost")
     DB_PORT = int(os.environ.get("DB_PORT", "3306"))
     DB_NAME = os.environ.get("DB_NAME", "dm_skill_institute")

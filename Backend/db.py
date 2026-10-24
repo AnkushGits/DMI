@@ -10,7 +10,7 @@ def _get_pool():
     if pool is None:
         pool = MySQLConnectionPool(
             pool_name="dm_skill_institute",
-            pool_size=5,
+            pool_size=current_app.config["DB_POOL_SIZE"],
             host=current_app.config["DB_HOST"],
             port=current_app.config["DB_PORT"],
             database=current_app.config["DB_NAME"],

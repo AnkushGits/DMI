@@ -179,7 +179,7 @@ CREATE TABLE IF NOT EXISTS assignments (
 -- marked for a day, not per course. Uniqueness is employee + date.
 CREATE TABLE IF NOT EXISTS employee_attendance (
   id              BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  employee_id     BIGINT UNSIGNED NOT NULL,
+  employee_id     INT UNSIGNED NOT NULL,
   attendance_date DATE NOT NULL,
   status          ENUM('present','absent','late','leave','half_day') NOT NULL,
   remarks         VARCHAR(500) NULL,
